@@ -1,12 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+	font-family: "Epilogue", sans-serif;
+	line-height: 27px;
+	font-size: 17px;
+}
 .header{
 	display: flex;
 	justify-content: space-between;
+	height: 80px;
+	align-items: center;
+	padding-left: 50px;
+	padding-right: 50px;
+	-webkit-box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
+	box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
 }
 .header-nav-list{
 	display: flex;
 	justify-content: space-between;
+	min-width: 200px;
+}
+.header-logo__text{
+	font-weight: 600;
+	font-size: 20px;
 }
 a{
 	text-decoration: none;
 	color: black;
+}
+.section{
+	background-color: #9fc6dd45;
+	padding-top: 120px;
+	padding-bottom: 120px;
+}
+.section-card{
+	display: flex;
+	width: 780px;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 15px;
+	padding: 20px;
+	-webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.avatar{
+	width: 250px;
+	height: 250px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	border-radius: 50%;
+}
+.section-card-info__name{
+	font-weight: bold;
+	text-align: center;
+}
+.section-card-info__skills{
+	text-align: center;
+}
+.section-card-bio{
+	padding-left: 65px;
+	padding-top: 100px;
+	padding-bottom: 81px;
+}
+.section-card-bio__text{
+	font-weight: 400;
 }
