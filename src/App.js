@@ -3,6 +3,15 @@ import "./css/main.css";
 import avatar from "./img/photo.jpg"
 
 function App() {
+  
+  fetch('https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+
   return (
     <div className="App">
       <header className="header">
@@ -27,7 +36,6 @@ function App() {
         </div>
       </main>
       <footer className="footer">
-
       </footer>
     </div>
   );
