@@ -15,6 +15,7 @@ body{
 	-webkit-box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
 	-moz-box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
 	box-shadow: 4px 4px 22px 0px rgba(34, 60, 80, 0.2);
+	margin-bottom: 80px;
 }
 .header-nav-list{
 	display: flex;
@@ -25,46 +26,18 @@ body{
 	font-weight: 600;
 	font-size: 20px;
 }
-a{
-	text-decoration: none;
-	color: black;
-}
-.section{
-	padding-top: 120px;
-	padding-bottom: 120px;
-}
-.section-card{
-	background-color: #8aadc21d;
+.navigation-block{
+	margin: 0 auto;
 	display: flex;
 	width: 780px;
-	margin: 0 auto;
-	border-radius: 15px;
-	padding: 20px;
-	-webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	gap: 10px;
+	margin-bottom: 10px;
 }
-.avatar{
-	width: 250px;
-	height: 250px;
-	border: 1px solid black;
-	margin-bottom: 20px;
-	border-radius: 50%;
+a{
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.664);
 }
-.section-card-info__name{
-	font-weight: bold;
-	text-align: center;
-}
-.section-card-info__skills{
-	text-align: center;
-}
-.section-card-bio{
-	padding-left: 65px;
-	padding-top: 50px;
-}
-.section-card-bio__text{
-	font-weight: 300;
-	font-size: 20px;
-	font-family: "Yanone Kaffeesatz", sans-serif;
-	vertical-align: middle;
+a:hover{
+	color: black;
+	border-bottom: 1px solid black;
 }
