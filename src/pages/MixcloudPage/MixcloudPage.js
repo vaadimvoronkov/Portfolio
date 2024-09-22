@@ -4,27 +4,37 @@ import "./MixcloudPage.css";
 const apiUrl = "https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases";
 
 export const MixcloudPage = () => {
-  const [releases, setReleases] = useState({});
+  const [releases, setReleases] = useState(null);
 
   useEffect(() => {
     fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          console.log('error')
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        setReleases(data)
+        setReleases(data);
         console.log(data);
-      });
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  if (!releases.releases) {
-    return <div>loading</div>
+  if (!releases) {
+    return <div>Loading...</div>;
   }
 
-  return <div>{releases.releases.rows.map((release) => {
-    return <div>{release.title}</div>
-  })}</div>;
+  return (
+    <div className="mixcloud-container">
+        <div>
+          <ul className="playlist-list">
+            {releases.rows.map((release, index) => (
+              <li key={index} className="playlist-item">
+                <div className="playlist-info">
+                  <p>Number: {release.number}</p>
+                  <p>{release.title}</p>
+                  <p>Date: {release.date}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+    </div>
+  );
 };
