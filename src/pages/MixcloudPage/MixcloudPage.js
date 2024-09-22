@@ -17,16 +17,17 @@ export const MixcloudPage = () => {
       .then((data) => {
         setReleases(data)
         console.log('success');
+        console.log(data);
       });
   }, []);
 
-  if (!releases.releases) {
+  if (!releases) {
     return <div>loading</div>
   }
 
   console.log(releases.releases)
 
-  return <div>{releases.releases.rows.map((release) => {
+  return <div>{releases.rows.map((release) => {
     return <div>{release.title}</div>
   })}</div>;
 };
