@@ -11,15 +11,35 @@
   .playlist-item {
     display: flex;
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+    padding: 15px;
     background-color: #8aadc21d;
     margin-bottom: 20px;
     border-radius: 15px;
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   }
-  .playlist-info p {
+  .playlist-header p {
     margin: 3px 0;
   }
+  .playlist-header img{
+    width: 50px;
+    height: 50px;
+  }
+  .playlist-header__title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .pagination{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: #8aadc21d;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 780px;
+    border-radius: 15px;
+  }
+
   

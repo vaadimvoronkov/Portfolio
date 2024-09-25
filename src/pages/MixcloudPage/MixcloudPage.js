@@ -26,14 +26,29 @@ export const MixcloudPage = () => {
           <ul className="playlist-list">
             {releases.rows.map((release, index) => (
               <li key={index} className="playlist-item">
+                <div className="playlist-header">
+                  <p className="playlist-header__title">{release.title}</p>
+                  <img src={release.image_url} alt="playlist"></img>
+                </div>
                 <div className="playlist-info">
                   <p>Number: {release.number}</p>
-                  <p>{release.title}</p>
                   <p>Date: {release.date}</p>
+                  <p>Rating: {release.rating}</p>
                 </div>
               </li>
             ))}
           </ul>
+        </div>
+        <div className="pagination">
+          <div className="pagination_left">
+            Previous
+          </div>
+          <div className="pagination_middle">
+            {releases.pager.current_page}/{releases.pager.total_pages}
+          </div>
+          <div className="pagination_right">
+            Next
+          </div>
         </div>
     </div>
   );
