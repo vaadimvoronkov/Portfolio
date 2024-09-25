@@ -27,10 +27,6 @@
   .playlist-header p {
     margin: 3px 0;
   }
-  .playlist-header img{
-    width: 50px;
-    height: 50px;
-  }
   .playlist-header__title{
     font-size: 20px;
     font-weight: bold;

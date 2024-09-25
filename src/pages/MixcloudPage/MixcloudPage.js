@@ -28,12 +28,15 @@ export const MixcloudPage = () => {
               <li key={index} className="playlist-item">
                 <div className="playlist-header">
                   <p className="playlist-header__title">{release.title}</p>
-                  <img src={release.image_url} alt="playlist"></img>
+                  <p>{release.number}</p>
+                </div>
+                <div className="playlist-tracklist">
+                  <p>TrackList</p>
                 </div>
                 <div className="playlist-info">
-                  <p>Number: {release.number}</p>
                   <p>Date: {release.date}</p>
                   <p>Rating: {release.rating}</p>
+                  <p>Vote Count: {release.vote_count}</p>
                 </div>
               </li>
             ))}
