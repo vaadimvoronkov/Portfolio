@@ -10,6 +10,7 @@
   }
   .playlist-item {
     display: flex;
+    border: 1px solid transparent;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
@@ -19,6 +20,9 @@
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
+  .playlist-item:hover{
+    border: 1px solid black;
   }
   .playlist-header p {
     margin: 3px 0;
@@ -40,6 +44,7 @@
     text-align: center;
     max-width: 780px;
     border-radius: 15px;
+    border: 1px solid black;
   }
 
   
