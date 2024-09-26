@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import "./MixcloudPage.css";
 
-const apiUrl = "https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases";
+const apiUrl = "https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases?page=";
 
 
 export const MixcloudPage = () => {
   const [releases, setReleases] = useState(null);
   const [count,setCount] = useState(0);
-
-  console.log(count);
 
   const handleAddOne = () => {
     setCount(count+1);
@@ -17,16 +15,19 @@ export const MixcloudPage = () => {
     if(count > 0)
       setCount(count-1);
   }
-
+  const changeUrl = (url,number) =>{
+    return `${url}${number}`;
+  }
+ 
   useEffect(() => {
-    fetch(apiUrl)
+    fetch(changeUrl(apiUrl,count))
       .then((response) => response.json())
       .then((data) => {
         setReleases(data);
         console.log(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  },[count]);
 
   if (!releases) {
     return <div>Loading...</div>;
