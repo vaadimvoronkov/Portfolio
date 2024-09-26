@@ -3,6 +3,7 @@
     color: black;
     max-width: 780px;
     margin: 0 auto;
+    font-size: 14px;
   }
   .playlist-list {
     padding: 0;
@@ -28,7 +29,7 @@
     margin: 3px 0;
   }
   .playlist-header__title{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
   }
   .pagination{
@@ -41,6 +42,15 @@
     max-width: 780px;
     border-radius: 15px;
     border: 1px solid black;
+  }
+  .rating-number{
+    color: #90B494;
+  }
+  .vote-count-number{
+    color: #208AAE;
+  }
+  .underline{
+    text-decoration: underline;
   }
 
   
