@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import "./MixcloudPage.css";
 
 const apiUrl = "https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases?page=";
-
+  const imageUrl = 'https://aerostatbg.ru';
 
 export const MixcloudPage = () => {
   const [releases, setReleases] = useState(null);
   const [count,setCount] = useState(0);
+
 
   const handleAddOne = () => {
     setCount(count+1);
@@ -42,6 +43,7 @@ export const MixcloudPage = () => {
                 <div className="playlist-header">
                   <p className="playlist-header__title underline">{release.title}</p>
                   <p>{release.number}</p>
+                  <img src={`${imageUrl}${release.image_url}`} alt=""></img>
                 </div>
                 <div className="playlist-tracklist">
                   <p>TrackList</p>

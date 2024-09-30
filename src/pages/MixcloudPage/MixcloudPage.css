@@ -1,7 +1,7 @@
 .mixcloud-container {
     padding: 20px;
     color: black;
-    max-width: 780px;
+    max-width: 1000px;
     margin: 0 auto;
     font-size: 14px;
   }
@@ -9,12 +9,16 @@
     padding: 0;
     margin: 0;
   }
+  .playlist-header img{
+    width: 150px;
+    height: 150px;
+  }
   .playlist-item {
     display: flex;
     border: 1px solid transparent;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 30px;
     background-color: #8aadc21d;
     margin-bottom: 20px;
     border-radius: 15px;
@@ -39,7 +43,7 @@
     background-color: #8aadc21d;
     margin: 0 auto;
     text-align: center;
-    max-width: 780px;
+    max-width: 1000px;
     border-radius: 15px;
     border: 1px solid black;
   }
