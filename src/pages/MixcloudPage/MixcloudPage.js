@@ -11,11 +11,11 @@ export const MixcloudPage = () => {
   const handleAddOne = () => {
     setCount(count+1);
   }
-  const handleSubstractOne = () =>{
+  const handleSubstractOne = () => {
     if(count > 0)
       setCount(count-1);
   }
-  const changeUrl = (url,number) =>{
+  const changeUrl = (url,number) => {
     return `${url}${number}`;
   }
  
@@ -45,6 +45,10 @@ export const MixcloudPage = () => {
                 </div>
                 <div className="playlist-tracklist">
                   <p>TrackList</p>
+                  {release.composition_list.map((composition) => (
+                    <div>
+                      {composition.composition_name}
+                    </div>))}
                 </div>
                 <div className="playlist-info">
                   <p>Date: {release.date}</p>
@@ -57,7 +61,7 @@ export const MixcloudPage = () => {
         </div>
         <div className="pagination">
           <div className="pagination_left">
-            <button onClick={handleSubstractOne}>Previous</button>
+            <button disabled = {count === 0} onClick={handleSubstractOne}>Previous</button>
           </div>
           <div className="pagination_middle">
             {releases.pager.current_page}/{releases.pager.total_pages}
