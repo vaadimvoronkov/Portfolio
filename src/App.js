@@ -14,12 +14,12 @@ function App() {
             <b>Portfolio</b>
           </div>
         </div>
-        <ul class="h__social">
+        <ul className ="h__social">
           <li>
-            <a href="https://t.me/vaadimvoronkov" class="telegram"></a>
+            <a href="https://t.me/vaadimvoronkov" className ="telegram"> </a>
           </li>
           <li>
-            <a href="https://vk.com/vaadimvoronkov" class="vk"></a>
+            <a href="https://vk.com/vaadimvoronkov" className ="vk"> </a>
           </li>
         </ul>
       </header>
