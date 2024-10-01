@@ -60,9 +60,6 @@ body {
 .telegram:hover {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cg transform='translate(514 8910)'%3E%3Crect width='30' height='30' rx='4' transform='translate(-514 -8910)' fill='%233f729b'/%3E%3Cpath d='M11,.563a11,11,0,1,0,11,11A11,11,0,0,0,11,.563ZM16.4,8.1,14.6,16.606c-.133.6-.492.75-.994.466l-2.75-2.027L9.527,16.322a.694.694,0,0,1-.554.271l.2-2.8,5.1-4.6c.222-.2-.049-.306-.342-.111l-6.3,3.965L4.91,12.2c-.59-.186-.6-.59.124-.874L15.64,7.233c.492-.177.923.12.763.865Z' transform='translate(-510 -8906.563)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
 }
-.github{
-	background-image: url("");
-}
 .header-logo__text {
   font-weight: 600;
   font-size: 20px;
@@ -72,7 +69,7 @@ body {
   display: flex;
   width: 780px;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 a {
   text-decoration: none;

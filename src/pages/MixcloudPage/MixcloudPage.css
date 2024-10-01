@@ -1,7 +1,7 @@
 .mixcloud-container {
     padding: 20px;
     color: black;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
   }
@@ -9,15 +9,11 @@
     padding: 0;
     margin: 0;
   }
-  .playlist-header img{
-    width: 150px;
-    height: 150px;
-  }
   .playlist-item {
     display: flex;
     border: 1px solid transparent;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 30px;
     background-color: #8aadc21d;
     margin-bottom: 20px;
@@ -28,6 +24,20 @@
   }
   .playlist-item:hover{
     border: 1px solid black;
+  }
+    .playlist-header{
+    width: 200px;
+  }
+  .playlist-header img{
+    width: 200px;
+    height: 200px;
+  }
+  .playlist-tracklist{
+    font-size: 14px;
+    width: 400px;
+  }
+  .playlist-tracklist-compositions{
+    font-size: 12px;
   }
   .playlist-header p {
     margin: 3px 0;
@@ -43,9 +53,10 @@
     background-color: #8aadc21d;
     margin: 0 auto;
     text-align: center;
-    max-width: 1000px;
+    max-width: 1200px;
     border-radius: 15px;
     border: 1px solid black;
+    margin-bottom: 15px;
   }
   .rating-number{
     color: #90B494;
@@ -55,6 +66,9 @@
   }
   .underline{
     text-decoration: underline;
+  }
+  .bold{
+    font-weight: bold;
   }
 
   
