@@ -85,22 +85,13 @@ export const MixcloudPage = () => {
       </div>
       <div className="pagination">
         <div className="pagination_left">
-          <button disabled={count === 0} onClick={handleSubstractOne}>
-            Previous
-          </button>
+          <button disabled={count === 0} onClick={handleSubstractOne}>Previous</button>
         </div>
         <div className="pagination_middle">
           {releases.pager.current_page}/{releases.pager.total_pages}
         </div>
         <div className="pagination_right">
-          <button
-            disabled={
-              releases.pager.total_pages === releases.pager.current_page
-            }
-            onClick={handleAddOne}
-          >
-            Next
-          </button>
+          <button disabled={releases.pager.total_pages === releases.pager.current_page } onClick={handleAddOne}>Next</button>
         </div>
       </div>
     </div>
