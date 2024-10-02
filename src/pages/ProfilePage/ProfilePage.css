@@ -1,19 +1,12 @@
 .section-card{
-	background-color: #8aadc21d;
 	display: flex;
 	max-width: 800px;
 	margin: 0 auto;
-	margin-top: 20px;
-	border-radius: 15px;
 	padding: 20px;
-	-webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	-moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 .avatar{
 	width: 250px;
 	height: 250px;
-	border: 1px solid black;
 	margin-bottom: 20px;
 	border-radius: 50%;
 }
