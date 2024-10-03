@@ -1,25 +1,25 @@
 .section-card{
 	display: flex;
-	padding: 20px;
+	gap: 30px;
+	padding: 10px;
+	font-weight: 300;
+	font-size: 18px;
 }
 .avatar{
-	width: 200px;
-	height: 200px;
-	margin-bottom: 20px;
+	width: 300px;
+	height: 300px;
+	margin-bottom: 15px;
 	border-radius: 50%;
+}
+.section-card-info{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .section-card-info__name{
 	font-weight: bold;
-	text-align: center;
-}
-.section-card-info__skills{
-	text-align: center;
 }
 .section-card-bio{
-	padding-left: 30px;
-	padding-top: 70px;
-}
-.section-card-bio__text{
-	font-weight: 300;
-	font-size: 16px;
+	display: flex;
+	align-items: center;
 }
