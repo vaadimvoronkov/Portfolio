@@ -11,7 +11,7 @@ export const MixcloudPage = () => {
   const [pageCount, setPageCount] = useState(0);
 
   const handleAddOne = () => {
-    setPageCount(pageCount + 1);
+    if(pageCount<pager.total_pages) setPageCount(pageCount + 1);
   };
   const handleSubstractOne = () => {
     if (pageCount > 0) setPageCount(pageCount - 1);
