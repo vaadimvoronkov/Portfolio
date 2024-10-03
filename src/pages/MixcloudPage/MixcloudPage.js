@@ -6,25 +6,32 @@ const imageUrl = "https://aerostatbg.ru";
 
 export const MixcloudPage = () => {
   const [releases, setReleases] = useState([]);
-  const[pager, setPager] = useState({})
-  
+  const [pager, setPager] = useState({});
+  const [isPlaying, setIsPlaying] = useState(null);
   const [pageCount, setPageCount] = useState(0);
 
-  const handleAddOne = () => {
-    if(pageCount<pager.total_pages) setPageCount(pageCount + 1);
+  const handleNextPage = () => {
+    if (pageCount < pager.total_pages) setPageCount(pageCount + 1);
   };
-  const handleSubstractOne = () => {
+  const handlePrevPage = () => {
     if (pageCount > 0) setPageCount(pageCount - 1);
   };
-  const changeUrl = (url, number) => {
+  const buildUrl = (url, number) => {
     return `${url}${number}`;
+  };
+  const handlePlayPause = (index) => {
+    if (isPlaying === index) {
+      setIsPlaying(null);
+    } else {
+      setIsPlaying(index);
+    }
   };
 
   useEffect(() => {
-    fetch(changeUrl(apiUrl, pageCount))
+    fetch(buildUrl(apiUrl, pageCount))
       .then((response) => response.json())
       .then((data) => {
-        setReleases((prevReleases)=>[...prevReleases, ...data.rows]);
+        setReleases((prevReleases) => [...prevReleases, ...data.rows]);
         setPager(data.pager);
         console.log(data);
       })
@@ -37,52 +44,56 @@ export const MixcloudPage = () => {
 
   return (
     <div className="mixcloud-container">
-      <div>
-        <ul className="playlist-list">
-          {releases.map((release, index) => (
-            <li key={index} className="playlist-item">
-              <div className="playlist-header">
-                <p className="playlist-header__title underline">
-                  {release.title}
-                </p>
-                <p>{release.number}</p>
-                <img src={`${imageUrl}${release.image_url}`} alt=""></img>
+      <ul className="release-list">
+        {releases.map((release, index) => (
+          <li key={index} className="release-item">
+            <div className="release-header">
+              <p className="release-title underline">{release.title}</p>
+              <p>{release.number}</p>
+              <div className="release-image-container" onClick={() => handlePlayPause(index)}>
+                <img src={`${imageUrl}${release.image_url}`} alt="" className="release-image"/>
+                {isPlaying === index ? (
+                  <div className="icon pause-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"className="pause-icon-svg">
+                      <rect x="6" y="4" width="4" height="16" />
+                      <rect x="14" y="4" width="4" height="16" />
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="icon play-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="play-icon-svg">
+                      <polygon points="5,3 19,12 5,21" />
+                    </svg>
+                  </div>
+                )}
               </div>
-              <div className="playlist-tracklist">
-                <p className="bold underline">TrackList:</p>
-                <div className="playlist-tracklist-compositions">
-                  {release.composition_list.map((composition, index) => (
-                   <div key={index}>{composition.composition_name}</div>
-                  ))}
-                </div>
+            </div>
+            <div className="release-tracklist">
+              <p className="bold underline">TrackList:</p>
+              <div className="tracklist-compositions">
+                {release.composition_list.map((composition, index) => (
+                  <div key={index}>{composition.composition_name}</div>
+                ))}
               </div>
-              <div className="playlist-info">
-                <p>Date: {release.date}</p>
-                <p>
-                  Rating:{" "}
-                  <span className="rating-number">{release.rating}</span>
-                </p>
-                <p>
-                  Vote Count:{" "}
-                  <span className="vote-count-number">
-                    {release.vote_count}
-                  </span>
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+            <div className="release-info">
+              <p>Date: {release.date}</p>
+              <p>Rating: <span className="rating-number">{release.rating}</span></p>
+              <p>Vote Count:{" "}<span className="vote-count-number">{release.vote_count}</span></p>
+            </div>
+          </li>
+        ))}
+      </ul>
       <div className="pagination">
-        <div className="pagination_left">
-          <button disabled = {pager.current_page === 0} onClick={handleSubstractOne}>Previous</button>
-        </div>
-        <div className="pagination_middle">
-          {pager.current_page+1}/{pager.total_pages}
-        </div>
-        <div className="pagination_right">
-          <button disabled={pager.total_pages === pager.current_page } onClick={handleAddOne}>Next</button>
-        </div>
+        <button disabled={pager.current_page === 0} onClick={handlePrevPage} className="pagination-button">
+          Previous
+        </button>
+        <span className="pagination-info">
+          {pager.current_page + 1} / {pager.total_pages}
+        </span>
+        <button disabled={pager.current_page === pager.total_pages} onClick={handleNextPage} className="pagination-button">
+          Next
+        </button>
       </div>
     </div>
   );
