@@ -1,74 +1,58 @@
 .mixcloud-container {
-    padding: 20px;
-    color: black;
-    max-width: 1000px;
-    margin: 0 auto;
-    font-size: 14px;
-  }
-  .playlist-list {
-    padding: 0;
-    margin: 0;
-  }
-  .playlist-item {
-    display: flex;
-    border: 1px solid transparent;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    background-color: #8aadc21d;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-	  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  }
-  .playlist-item:hover{
-    border: 1px solid black;
-  }
-    .playlist-header{
-    width: 200px;
-  }
-  .playlist-header img{
-    width: 200px;
-    height: 200px;
-  }
-  .playlist-tracklist{
-    font-size: 14px;
-    width: 400px;
-  }
-  .playlist-tracklist-compositions{
-    font-size: 12px;
-  }
-  .playlist-header p {
-    margin: 3px 0;
-  }
-  .playlist-header__title{
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .pagination{
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    background-color: #8aadc21d;
-    margin: 0 auto;
-    text-align: center;
-    max-width: 1200px;
-    border-radius: 15px;
-    border: 1px solid black;
-    margin-bottom: 15px;
-  }
-  .rating-number{
-    color: #90B494;
-  }
-  .vote-count-number{
-    color: #208AAE;
-  }
-  .underline{
-    text-decoration: underline;
-  }
-  .bold{
-    font-weight: bold;
-  }
-
-  
+  color: black;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.playlist-item {
+  display: flex;
+  border: 1px solid transparent;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #8aadc21d;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.playlist-item:hover {
+  border: 1px solid black;
+}
+.playlist-header {
+  width: 200px;
+}
+.playlist-header img {
+  width: 200px;
+  height: 200px;
+}
+.playlist-tracklist {
+  width: 400px;
+}
+.playlist-tracklist-compositions {
+  font-size: 12px;
+}
+.playlist-header__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.pagination {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: #8aadc21d;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+.rating-number {
+  color: #90b494;
+}
+.vote-count-number {
+  color: #208aae;
+}
+.underline {
+  text-decoration: underline;
+}
+.bold {
+  font-weight: bold;
+}
