@@ -95,6 +95,7 @@ export const MixcloudPage = () => {
           Next
         </button>
       </div>
+      <div className="audio-player"></div>
     </div>
   );
 };

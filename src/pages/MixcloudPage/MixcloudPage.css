@@ -3,7 +3,6 @@
   margin: 0 auto;
   font-size: 14px;
 }
-
 .release-list {
   list-style-type: none;
   padding: 0;
@@ -142,4 +141,12 @@
 
 .underline {
   text-decoration: underline;
+}
+.audio-player{
+  position: fixed;
+  height: 10vh;
+  width: 99vw;
+  left: 0%;
+  top: 90%;
+  background-color: #d1e7fb;
 }
