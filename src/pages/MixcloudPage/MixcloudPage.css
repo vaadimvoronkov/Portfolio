@@ -142,6 +142,13 @@
 .underline {
   text-decoration: underline;
 }
+.visible{
+  visibility: visible;
+  transition: visibility 2s;
+}
+.hidden{
+  visibility: hidden;
+}
 .audio-player{
   position: fixed;
   height: 10vh;
