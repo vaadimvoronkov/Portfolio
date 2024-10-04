@@ -8,13 +8,13 @@ export const MixcloudPage = () => {
   const [releases, setReleases] = useState([]);
   const [pager, setPager] = useState({});
   const [isPlaying, setIsPlaying] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const handleNextPage = () => {
-    if (pageCount < pager.total_pages) setPageCount(pageCount + 1);
+    if (pageNumber < pager.total_pages) setPageNumber(pageNumber + 1);
   };
   const handlePrevPage = () => {
-    if (pageCount > 0) setPageCount(pageCount - 1);
+    if (pageNumber > 0) setPageNumber(pageNumber - 1);
   };
   const buildUrl = (url, number) => {
     return `${url}${number}`;
@@ -28,7 +28,7 @@ export const MixcloudPage = () => {
   };
 
   useEffect(() => {
-    fetch(buildUrl(apiUrl, pageCount))
+    fetch(buildUrl(apiUrl, pageNumber))
       .then((response) => response.json())
       .then((data) => {
         setReleases((prevReleases) => [...prevReleases, ...data.rows]);
@@ -36,7 +36,7 @@ export const MixcloudPage = () => {
         console.log(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, [pageCount]);
+  }, [pageNumber]);
 
   if (!releases) {
     return <div>Loading...</div>;
@@ -95,6 +95,7 @@ export const MixcloudPage = () => {
           Next
         </button>
       </div>
+      <div className="audio-player"></div>
     </div>
   );
 };
