@@ -113,7 +113,7 @@
   background-color: #f0f4f8;
   border-radius: 15px;
   border: 1px solid black;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
 }
 
 .pagination-button {
@@ -148,5 +148,5 @@
   width: 99vw;
   left: 0%;
   top: 90%;
-  background-color: #d1e7fb;
+  background-color: #d1e7fbfb;
 }
