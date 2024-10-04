@@ -152,7 +152,7 @@
 .audio-player{
   position: fixed;
   height: 10vh;
-  width: 99vw;
+  width: 100vw;
   left: 0%;
   top: 90%;
   background-color: #d1e7fbfb;
