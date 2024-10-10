@@ -16,7 +16,8 @@
 .avatar{
 	width: 350px;
 	height: 350px;
-	border-radius: 50%;
+	border-radius: 48% 52% 70% 30% / 30% 57% 43% 70% ;
+	
 }
 .section-card-bio{
 	display: flex;
@@ -24,16 +25,16 @@
 	justify-content: center;
 }
 
-h1{
+.section-card h1{
 	font-size: 48px;
 	font-weight: bold;
 }
-h2{
+.section-card h2{
 	font-size: 32px;
 	font-weight: 200;
 	margin-bottom: 10px;
 }
-p{
+.section-card p{
 	font-size: 18px;
 	font-weight: 300;
 }
@@ -41,7 +42,7 @@ mark{
 	background-color: transparent;
 	background-image: linear-gradient(#DFECFF, #DFECFF);
 	background-repeat: no-repeat;
-	animation: highlight 5s forwards;
+	animation: highlight 4s forwards;
 }
 
 @keyframes highlight{

@@ -10,14 +10,14 @@ export const MixcloudPage = () => {
   const [isPlaying, setIsPlaying] = useState(null);
   const [pageNumber, setPageNumber] = useState(0);
 
+  const buildUrl = (url, number) => {
+    return `${url}${number}`;
+  };
   const handleNextPage = () => {
     if (pageNumber < pager.total_pages) setPageNumber(pageNumber + 1);
   };
   const handlePrevPage = () => {
     if (pageNumber > 0) setPageNumber(pageNumber - 1);
-  };
-  const buildUrl = (url, number) => {
-    return `${url}${number}`;
   };
   const handlePlayPause = (index) => {
     if (isPlaying === index) {
@@ -39,7 +39,7 @@ export const MixcloudPage = () => {
   }, [pageNumber]);
 
   if (!releases) {
-    return <div>Loading...</div>;
+    return <div>Загрузка...</div>;
   }
 
   return (
@@ -48,7 +48,7 @@ export const MixcloudPage = () => {
         {releases.map((release, index) => (
           <li key={index} className="release-item">
             <div className="release-header">
-              <p className="release-title underline">{release.title}</p>
+              <h2>{release.title}</h2>
               <p>{release.number}</p>
               <div className="release-image-container" onClick={() => handlePlayPause(index)}>
                 <img src={`${imageUrl}${release.image_url}`} alt="" className="release-image"/>
@@ -69,7 +69,7 @@ export const MixcloudPage = () => {
               </div>
             </div>
             <div className="release-tracklist">
-              <p className="bold underline">TrackList:</p>
+              <h2>Список треков:</h2>
               <div className="tracklist-compositions">
                 {release.composition_list.map((composition, index) => (
                   <div key={index}>{composition.composition_name}</div>
@@ -77,9 +77,9 @@ export const MixcloudPage = () => {
               </div>
             </div>
             <div className="release-info">
-              <p>Date: {release.date}</p>
-              <p>Rating: <span className="rating-number">{release.rating}</span></p>
-              <p>Vote Count:{" "}<span className="vote-count-number">{release.vote_count}</span></p>
+              <p>Дата: {release.date}</p>
+              <p>Оценка: <span className="rating-number">{release.rating}</span></p>
+              <p>Количество оценок:{" "}<span className="vote-count-number">{release.vote_count}</span></p>
             </div>
           </li>
         ))}
