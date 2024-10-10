@@ -1,43 +1,37 @@
 .mixcloud-container {
-  color: black;
-  margin: 0 auto;
   font-size: 14px;
-  padding: 10px;
 }
 .release-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding: 20px;
+}
+
+.mixcloud-container h2{
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .release-item {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  gap: 30px;
   align-items: center;
   border: 1px solid transparent;
   padding: 20px;
-  background-color: #f0f4f8;
+  background-color: white;
   margin-bottom: 20px;
-  border-radius: 15px;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  transition: border 0.3s;
+  transition: border 1s;
 }
 
 .release-item:hover {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .release-header {
   display: flex;
   flex-direction: column;
-  align-items: start;
-}
-
-.release-title {
-  font-size: 18px;
-  font-weight: bold;
-  max-width: 200px;
+  width: 200px;
 }
 
 .release-image-container {
@@ -69,7 +63,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
 }
 
@@ -80,24 +74,18 @@
 .play-icon-svg,
 .pause-icon-svg {
   fill: white;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
 }
 
 .release-tracklist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tracklist-compositions{
   width: 400px;
 }
-
-.tracklist-compositions {
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.release-info {
-  font-size: 14px;
-  margin-top: 10px;
-}
-
 .rating-number {
   color: #90b494;
 }
@@ -135,14 +123,6 @@
 .pagination-button:hover:not(:disabled) {
   background-color: #1b7997;
 }
-
-.bold {
-  font-weight: bold;
-}
-
-.underline {
-  text-decoration: underline;
-}
 .visible{
   visibility: visible;
   transition: visibility 2s;
@@ -156,5 +136,5 @@
   width: 100vw;
   left: 0%;
   top: 90%;
-  background-color: #d1e7fbfb;
+  background-color: #DFECFF;
 }
