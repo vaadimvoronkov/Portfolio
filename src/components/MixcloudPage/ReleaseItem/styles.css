@@ -1,0 +1,50 @@
+.release-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  border: 1px solid transparent;
+  padding: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: border 1s;
+}
+
+.release-item:hover {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.release-header {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.release-image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.release-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.release-tracklist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tracklist-compositions{
+  width: 400px;
+}
+.rating-number {
+  color: #90b494;
+}
+
+.vote-count-number {
+  color: #208aae;
+}

@@ -1,0 +1,31 @@
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.play-icon,
+.pause-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.release-image-container:hover .icon {
+  opacity: 1;
+}
+
+.play-icon-svg,
+.pause-icon-svg {
+  fill: white;
+  width: 25px;
+  height: 25px;
+}
