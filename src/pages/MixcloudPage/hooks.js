@@ -15,9 +15,6 @@ export const useReleases = () => {
   const handleNextPage = () => {
     if (pageNumber < pager.total_pages) setPageNumber(pageNumber + 1);
   };
-  const handlePrevPage = () => {
-    if (pageNumber > 0) setPageNumber(pageNumber - 1);
-  };
 
   useEffect(() => {
     fetch(buildUrl(apiUrl, pageNumber))
@@ -30,5 +27,5 @@ export const useReleases = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, [pageNumber]);
 
-  return { releases, pager, handleNextPage, handlePrevPage };
+  return { releases, pager, handleNextPage };
 };

@@ -1,0 +1,48 @@
+.menu{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+.menu-block {
+  border: 1px solid transparent;
+	padding: 10px;
+  background-color: white;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: border 1s;
+	border-radius: 15px;
+	height: 30px;
+	border: 1px solid transparent;
+}
+
+.menu-block:hover {
+  border: 1px solid #c5daf9;
+}
+
+.menu form {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+}
+.menu input {
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.menu button {
+  position: absolute; 
+  top: 0;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+	background-color: white;
+}
+.search-icon{
+	width: 100%;
+	height: 100%;
+}
