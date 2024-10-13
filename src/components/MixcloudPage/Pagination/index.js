@@ -1,16 +1,9 @@
 import "./styles.css";
 
 const Pagination = (props) => {
-  const { pager, handleNextPage, handlePrevPage } = props;
+  const { pager, handleNextPage } = props;
   return (
     <div className="pagination">
-      <button
-        disabled={pager.current_page === 0}
-        onClick={handlePrevPage}
-        className="pagination-button"
-      >
-        Previous
-      </button>
 
       <span className="pagination-info">
         {pager.current_page + 1} / {pager.total_pages}
@@ -21,7 +14,7 @@ const Pagination = (props) => {
         onClick={handleNextPage}
         className="pagination-button"
       >
-        Next
+        Загрузить ещё
       </button>
     </div>
   );
