@@ -1,27 +1,11 @@
 .mixcloud-container {
   font-size: 14px;
 }
-.release-list {
-  padding: 20px;
-}
-
-.mixcloud-container h2{
+.mixcloud-container h2 {
   font-size: 25px;
   font-weight: bold;
   text-decoration: underline;
 }
-.visible{
-  visibility: visible;
-  transition: visibility 2s;
-}
-.hidden{
-  visibility: hidden;
-}
-.audio-player{
-  position: fixed;
-  height: 10vh;
-  width: 100vw;
-  left: 0%;
-  top: 90%;
-  background-color: #DFECFF;
+.release-list {
+  padding: 20px;
 }

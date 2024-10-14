@@ -2,6 +2,7 @@ import "./styles.css";
 
 const PlayIcon = (props) => {
   const { isPlaying, index } = props;
+
   return isPlaying === index ? (
     <div className="icon pause-icon">
       <svg
