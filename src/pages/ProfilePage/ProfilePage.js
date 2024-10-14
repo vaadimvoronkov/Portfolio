@@ -1,5 +1,6 @@
 import avatar from "../../img/photo.jpg";
 import "./ProfilePage.css";
+import "./ProfilePageAdaptive.css"
 
 export const ProfilePage = () => (
   <div className="section">

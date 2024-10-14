@@ -1,55 +1,54 @@
-.section{
-	min-height: 92vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	font-size: 18px;
-	line-height: 1.5;
+.section {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1.5;
 }
-.section-card{
-	display: flex;
-	max-width: 800px;
-	width: 100%;
-	margin: 0 auto;
-	gap: 30px;
+.section-card {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 30px;
 }
-.avatar{
-	width: 350px;
-	height: 350px;
-	border-radius: 48% 52% 70% 30% / 30% 57% 43% 70% ;
-	
+.avatar {
+  width: 350px;
+  height: 350px;
+  border-radius: 48% 52% 70% 30% / 30% 57% 43% 70%;
 }
-.section-card-bio{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.section-card h1{
-	font-size: 48px;
-	font-weight: bold;
-}
-.section-card h2{
-	font-size: 32px;
-	font-weight: 200;
-	margin-bottom: 10px;
-}
-.section-card p{
-	font-size: 18px;
-	font-weight: 300;
-}
-mark{
-	background-color: transparent;
-	background-image: linear-gradient(#DFECFF, #DFECFF);
-	background-repeat: no-repeat;
-	animation: highlight 4s forwards;
+.section-card-bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@keyframes highlight{
-	from{
-		background-size: 0%;
-	}
-	to{
-		background-size: 100%;
-	}
+.section-card h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+.section-card h2 {
+  font-size: 32px;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+.section-card p {
+  font-size: 18px;
+  font-weight: 300;
+}
+mark {
+  background-color: transparent;
+  background-image: linear-gradient(#dfecff, #dfecff);
+  background-repeat: no-repeat;
+  animation: highlight 4s forwards;
+}
+
+@keyframes highlight {
+  from {
+    background-size: 0%;
+  }
+  to {
+    background-size: 100%;
+  }
 }
