@@ -13,6 +13,7 @@
 	border-radius: 15px;
 	height: 30px;
 	border: 1px solid transparent;
+  width: 600px;
 }
 
 .menu-block:hover {
@@ -21,8 +22,6 @@
 
 .menu form {
   position: relative;
-  width: 400px;
-  margin: 0 auto;
 }
 .menu input {
   width: 100%;

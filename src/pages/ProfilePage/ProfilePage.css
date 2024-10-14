@@ -36,6 +36,7 @@
 .section-card p {
   font-size: 18px;
   font-weight: 300;
+  margin-bottom: 10px;
 }
 mark {
   background-color: transparent;
@@ -43,7 +44,16 @@ mark {
   background-repeat: no-repeat;
   animation: highlight 4s forwards;
 }
-
+.messenger-links{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.link-block{
+  width: 40px;
+  height: 40px;
+}
 @keyframes highlight {
   from {
     background-size: 0%;
