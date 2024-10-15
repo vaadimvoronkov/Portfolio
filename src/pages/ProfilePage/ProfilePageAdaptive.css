@@ -9,6 +9,12 @@
       gap: 30px;
       text-align: center;
     }
+    .messenger-links{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
     .avatar {
       width: 350px;
       height: 350px;
