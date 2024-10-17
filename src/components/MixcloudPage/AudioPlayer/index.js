@@ -15,10 +15,11 @@ const AudioPlayer = (props) => {
       setTrackIndex(trackIndex + 1);
       const release = releases[trackIndex+1];
       audioRef.current.pause();
+      setIsPlaying(false);
       audioRef.current = new Audio(release.audiofile_url);
-      audioRef.current.currentTime = 200;
       audioRef.current.play();
-      
+      setIsPlaying(true)
+
     }
 
   };
