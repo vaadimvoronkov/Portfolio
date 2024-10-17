@@ -1,8 +1,10 @@
 .audio-player {
   position: fixed;
-  height: 80px;
+  height: 100px;
   width: 100vw;
   left: 0%;
-  top: 92%;
+  top: 90%;
   background-color: #dfecff;
+  display: flex;
+  flex-direction: column;
 }
