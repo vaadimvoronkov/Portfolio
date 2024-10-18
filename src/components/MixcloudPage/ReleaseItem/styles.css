@@ -9,6 +9,12 @@
   margin-bottom: 20px;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   transition: border 1s;
+  min-width: 1000px;
+}
+.mixcloud-container h2 {
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .release-item:hover {
@@ -38,7 +44,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.tracklist-compositions{
+.tracklist-compositions {
   width: 400px;
 }
 .rating-number {
@@ -48,3 +54,4 @@
 .vote-count-number {
   color: #208aae;
 }
+

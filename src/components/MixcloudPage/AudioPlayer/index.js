@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
@@ -12,49 +12,72 @@ const AudioPlayer = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
+  const imageUrl = "https://aerostatbg.ru";
 
   const handleNextPlaylist = () => {
-    if (releases.length - 1 > trackIndex) {
+    if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
       const release = releases[trackIndex + 1];
       audioRef.current.pause();
       setIsPlaying(false);
       audioRef.current = new Audio(release.audiofile_url);
-      audioRef.current.play();
-      setIsPlaying(true);
+    } else {
+      setTrackIndex(0);
     }
   };
   const handlePrevPlaylist = () => {
-    if (trackIndex > 0) setTrackIndex(trackIndex - 1);
+    if (trackIndex > 0) {
+      setTrackIndex(trackIndex - 1);
+      const release = releases[trackIndex - 1];
+      setIsPlaying(false);
+      audioRef.current = new Audio(release.audiofile_url);
+    }
   };
   const handlePlayPausePlaylist = () => {
     if (isPlaying === false) {
       setIsPlaying(true);
-      audioRef.current.play();
     } else {
       setIsPlaying(false);
-      audioRef.current.pause();
     }
   };
   console.log({ release, audioRef });
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <div className="audio-player">
       <div className="audio-timeline-container"></div>
       <div className="audio-navigation-container">
-        <button onClick={handlePrevPlaylist}>
-          <img src={prevIcon} alt="prev"></img>
-        </button>
-        <button onClick={handlePlayPausePlaylist}>
-          {isPlaying === true ? (
-            <img src={pauseIcon} alt="pause"></img>
-          ) : (
-            <img src={playIcon} alt="play"></img>
-          )}
-        </button>
-        <button onClick={handleNextPlaylist}>
-          <img src={nextIcon} alt="next"></img>
-        </button>
+      <div className="audio-navigation-container-buttons">
+          <button onClick={handlePrevPlaylist}>
+            <img src={prevIcon} alt="prev"></img>
+          </button>
+          <button onClick={handlePlayPausePlaylist}>
+            {isPlaying === true ? (
+              <img src={pauseIcon} alt="pause"></img>
+            ) : (
+              <img src={playIcon} alt="play"></img>
+            )}
+          </button>
+          <button onClick={handleNextPlaylist}>
+            <img src={nextIcon} alt="next"></img>
+          </button>
+        </div>
+        <div className="audio-navigation-container-info">
+          <div>
+            <div>{release.title}</div>
+            <div>{release.number}</div>
+          </div>
+          <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
+        </div>
+        <div className="audio-navigation-container-options">Options</div>
+        
       </div>
     </div>
   );
