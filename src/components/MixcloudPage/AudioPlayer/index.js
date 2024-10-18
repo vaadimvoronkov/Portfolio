@@ -8,17 +8,18 @@ import prevIcon from "../../../img/icons/player-previous.svg";
 const AudioPlayer = (props) => {
   const { releases } = props;
   const [trackIndex, setTrackIndex] = useState(0);
-  const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const release = releases[trackIndex];
+
+  let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
+
   const imageUrl = "https://aerostatbg.ru";
 
+  console.log(release);
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
-      const release = releases[trackIndex + 1];
-      audioRef.current.pause();
+      release = releases[trackIndex + 1];
       setIsPlaying(false);
       audioRef.current = new Audio(release.audiofile_url);
     } else {
@@ -28,9 +29,12 @@ const AudioPlayer = (props) => {
   const handlePrevPlaylist = () => {
     if (trackIndex > 0) {
       setTrackIndex(trackIndex - 1);
-      const release = releases[trackIndex - 1];
+      release = releases[trackIndex - 1];
       setIsPlaying(false);
       audioRef.current = new Audio(release.audiofile_url);
+    }
+    else{
+      setTrackIndex(releases.length-1);
     }
   };
   const handlePlayPausePlaylist = () => {
@@ -54,7 +58,7 @@ const AudioPlayer = (props) => {
     <div className="audio-player">
       <div className="audio-timeline-container"></div>
       <div className="audio-navigation-container">
-      <div className="audio-navigation-container-buttons">
+        <div className="audio-navigation-container-buttons">
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
           </button>
@@ -77,7 +81,6 @@ const AudioPlayer = (props) => {
           <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
         <div className="audio-navigation-container-options">Options</div>
-        
       </div>
     </div>
   );
