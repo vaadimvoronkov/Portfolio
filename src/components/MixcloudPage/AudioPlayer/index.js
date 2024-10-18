@@ -12,12 +12,11 @@ const AudioPlayer = (props) => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackProgress, setTrackProgress] = useState(0);
+  const [duration, setDuration] = useState();
 
   let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
-
-  const { duration } = audioRef.current;
-  const isReady = useRef(false);
+  console.log(audioRef.current.duration);
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
@@ -46,6 +45,7 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
   };
+  
   console.log({ release, audioRef });
 
 //Play and Stop 
@@ -59,7 +59,10 @@ const AudioPlayer = (props) => {
 
   return (
     <div className="audio-player">
-      <div className="audio-timeline-container"></div>
+      <div className="audio-timeline-container">
+        <div>0:00</div>
+        <div></div>
+      </div>
       <div className="audio-navigation-container">
         <div className="audio-navigation-container-buttons">
           <button onClick={handlePrevPlaylist}>
