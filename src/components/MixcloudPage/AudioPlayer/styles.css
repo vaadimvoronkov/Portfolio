@@ -1,12 +1,13 @@
 .audio-player {
   position: fixed;
-  height: 90px;
+  height: 95px;
   width: 100vw;
   left: 0%;
-  top: 90%;
+  top: 88%;
   background: white;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 .audio-timeline-container{
   height: 15px;
@@ -14,12 +15,27 @@
   background-color: rgba(179, 179, 179, 0.51);
   cursor: pointer;
 }
+.audio-navigation-container-info{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.audio-navigation-container-info img{
+  width: 55px;
+  width: 55px;
+}
 .audio-navigation-container{
   display: flex;
-  gap: 5px;
-  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  padding: 5px 60px 5px 30px;
 }
-.audio-navigation-container button{
+.audio-navigation-container-buttons{
+  display: flex;
+}
+.audio-navigation-container-buttons button{
   width: 40px;
   height: 40px;
   text-align: center;
@@ -28,10 +44,14 @@
   justify-content: center;
   border: none;
 }
-.audio-navigation-container img{
+.audio-navigation-container-buttons img{
   width: 35px;
   height: 35px;
+  filter: invert(150%) grayscale(150%) saturate(2000%) brightness(50%);
 }
-.audio-navigation-container button:hover{
+.audio-navigation-container-buttons img:hover{
+  filter: none;
+}
+.audio-navigation-container-buttons button:hover{
   cursor: pointer;
 }
