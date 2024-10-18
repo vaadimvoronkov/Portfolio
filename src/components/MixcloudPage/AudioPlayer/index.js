@@ -5,17 +5,20 @@ import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
 import prevIcon from "../../../img/icons/player-previous.svg";
 
+const imageUrl = "https://aerostatbg.ru";
+
 const AudioPlayer = (props) => {
   const { releases } = props;
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [trackProgress, setTrackProgress] = useState(0);
 
   let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
 
-  const imageUrl = "https://aerostatbg.ru";
+  const { duration } = audioRef.current;
+  const isReady = useRef(false);
 
-  console.log(release);
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
@@ -32,9 +35,8 @@ const AudioPlayer = (props) => {
       release = releases[trackIndex - 1];
       setIsPlaying(false);
       audioRef.current = new Audio(release.audiofile_url);
-    }
-    else{
-      setTrackIndex(releases.length-1);
+    } else {
+      setTrackIndex(releases.length - 1);
     }
   };
   const handlePlayPausePlaylist = () => {
@@ -46,6 +48,7 @@ const AudioPlayer = (props) => {
   };
   console.log({ release, audioRef });
 
+//Play and Stop 
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
