@@ -1,9 +1,11 @@
 import "./styles.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
 import prevIcon from "../../../img/icons/player-previous.svg";
+
+const imageUrl = "https://aerostatbg.ru";
 
 const AudioPlayer = (props) => {
   const { releases } = props;
@@ -12,18 +14,19 @@ const AudioPlayer = (props) => {
 
   let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
+  console.log(audioRef.current.duration);
 
-  const imageUrl = "https://aerostatbg.ru";
-
-  console.log(release);
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
       release = releases[trackIndex + 1];
       setIsPlaying(false);
+      audioRef.current.pause();
       audioRef.current = new Audio(release.audiofile_url);
     } else {
       setTrackIndex(0);
+      setIsPlaying(false);
+      audioRef.current.pause();
     }
   };
   const handlePrevPlaylist = () => {
@@ -31,32 +34,32 @@ const AudioPlayer = (props) => {
       setTrackIndex(trackIndex - 1);
       release = releases[trackIndex - 1];
       setIsPlaying(false);
+      audioRef.current.pause();
       audioRef.current = new Audio(release.audiofile_url);
-    }
-    else{
-      setTrackIndex(releases.length-1);
+    } else {
+      setTrackIndex(releases.length - 1);
+      setIsPlaying(false);
+      audioRef.current.pause();
     }
   };
   const handlePlayPausePlaylist = () => {
     if (isPlaying === false) {
       setIsPlaying(true);
-    } else {
-      setIsPlaying(false);
-    }
-  };
-  console.log({ release, audioRef });
-
-  useEffect(() => {
-    if (isPlaying) {
       audioRef.current.play();
     } else {
+      setIsPlaying(false);
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  };
+
+  console.log({ release, audioRef });
 
   return (
     <div className="audio-player">
-      <div className="audio-timeline-container"></div>
+      <div className="audio-timeline-container">
+        <div>0:00</div>
+        <div></div>
+      </div>
       <div className="audio-navigation-container">
         <div className="audio-navigation-container-buttons">
           <button onClick={handlePrevPlaylist}>
