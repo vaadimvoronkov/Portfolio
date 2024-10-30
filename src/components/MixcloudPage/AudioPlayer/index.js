@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
@@ -11,8 +11,6 @@ const AudioPlayer = (props) => {
   const { releases } = props;
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [trackProgress, setTrackProgress] = useState(0);
-  const [duration, setDuration] = useState();
 
   let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
@@ -23,9 +21,12 @@ const AudioPlayer = (props) => {
       setTrackIndex(trackIndex + 1);
       release = releases[trackIndex + 1];
       setIsPlaying(false);
+      audioRef.current.pause();
       audioRef.current = new Audio(release.audiofile_url);
     } else {
       setTrackIndex(0);
+      setIsPlaying(false);
+      audioRef.current.pause();
     }
   };
   const handlePrevPlaylist = () => {
@@ -33,29 +34,25 @@ const AudioPlayer = (props) => {
       setTrackIndex(trackIndex - 1);
       release = releases[trackIndex - 1];
       setIsPlaying(false);
+      audioRef.current.pause();
       audioRef.current = new Audio(release.audiofile_url);
     } else {
       setTrackIndex(releases.length - 1);
+      setIsPlaying(false);
+      audioRef.current.pause();
     }
   };
   const handlePlayPausePlaylist = () => {
     if (isPlaying === false) {
       setIsPlaying(true);
-    } else {
-      setIsPlaying(false);
-    }
-  };
-  
-  console.log({ release, audioRef });
-
-//Play and Stop 
-  useEffect(() => {
-    if (isPlaying) {
       audioRef.current.play();
     } else {
+      setIsPlaying(false);
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  };
+
+  console.log({ release, audioRef });
 
   return (
     <div className="audio-player">
