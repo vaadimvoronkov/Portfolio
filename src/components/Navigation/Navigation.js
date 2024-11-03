@@ -4,7 +4,7 @@ import "./Navigation.css";
 function Navigation() {
   return (
     <nav>
-      <ul>
+      <ul className="navigation">
         <li>
           <Link to="/">Profile</Link>
         </li>
