@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
@@ -9,50 +9,52 @@ const imageUrl = "https://aerostatbg.ru";
 
 const AudioPlayer = (props) => {
   const { releases } = props;
+
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [release,setRelease] = useState(releases[trackIndex]);
 
-  let release = releases[trackIndex];
   const audioRef = useRef(new Audio(release.audiofile_url));
-  console.log(audioRef.current.duration);
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
-      release = releases[trackIndex + 1];
-      setIsPlaying(false);
-      audioRef.current.pause();
-      audioRef.current = new Audio(release.audiofile_url);
     } else {
       setTrackIndex(0);
-      setIsPlaying(false);
-      audioRef.current.pause();
-    }
+    };
+    setIsPlaying(false);
   };
   const handlePrevPlaylist = () => {
-    if (trackIndex > 0) {
+    if (trackIndex - 1 >= 0) {
       setTrackIndex(trackIndex - 1);
-      release = releases[trackIndex - 1];
-      setIsPlaying(false);
-      audioRef.current.pause();
-      audioRef.current = new Audio(release.audiofile_url);
     } else {
       setTrackIndex(releases.length - 1);
-      setIsPlaying(false);
-      audioRef.current.pause();
     }
+    setIsPlaying(false);
   };
   const handlePlayPausePlaylist = () => {
     if (isPlaying === false) {
       setIsPlaying(true);
-      audioRef.current.play();
     } else {
       setIsPlaying(false);
-      audioRef.current.pause();
     }
   };
 
-  console.log({ release, audioRef });
+  useEffect(()=>{
+    if(isPlaying){
+      audioRef.current.play();
+    }else{
+      audioRef.current.pause();
+    }
+  },[isPlaying])
+
+  useEffect(() => {
+    setRelease(releases[trackIndex]);
+    audioRef.current.pause();
+    audioRef.current = new Audio(release.audiofile_url);
+  }, [trackIndex]);
+
+  console.log({ release, audioRef, trackIndex, isPlaying });
 
   return (
     <div className="audio-player">
