@@ -3,7 +3,7 @@ import "./styles.css";
 const HelperMenu = () => {
   return (
     <div className="menu">
-      <div className="menu-block">
+      <div className="menu-block wdth70perc">
         <form method="get">
           <input
             name="search"
@@ -11,6 +11,9 @@ const HelperMenu = () => {
             type="search"
           ></input>
         </form>
+      </div>
+      <div className="menu-block wdth30perc">
+        
       </div>
     </div>
   );

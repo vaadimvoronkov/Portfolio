@@ -38,6 +38,7 @@
 }
 .audio-navigation-container-buttons{
   display: flex;
+  align-items: center;
 }
 .audio-navigation-container-buttons button{
   width: 40px;

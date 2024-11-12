@@ -1,12 +1,11 @@
 .menu{
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	gap: 20px;
-  margin-bottom: 20px;
+  margin: 20px 20px 20px 20px;
 }
 .menu-block {
-  border: 1px solid transparent;
 	padding: 10px;
   background-color: white;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -14,11 +13,13 @@
 	border-radius: 15px;
 	height: 30px;
 	border: 1px solid transparent;
-  width: 600px;
 }
 
-.menu-block:hover {
-  border: 1px solid #c5daf9;
+.wdth30perc{
+  width: 30%;
+}
+.wdth70perc{
+  width: 70%;
 }
 
 .menu form {
