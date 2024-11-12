@@ -12,16 +12,20 @@ const AudioPlayer = (props) => {
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [release,setRelease] = useState(releases[trackIndex]);
+  const [release, setRelease] = useState(releases[trackIndex]);
+  const [trackProgress, setTrackProgress] = useState(0);
 
   const audioRef = useRef(new Audio(release.audiofile_url));
+  const intervalRef = useRef();
+  const isReady = useRef(false);
+  const { duration } = audioRef.current;
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       setTrackIndex(trackIndex + 1);
     } else {
       setTrackIndex(0);
-    };
+    }
     setIsPlaying(false);
   };
   const handlePrevPlaylist = () => {
@@ -40,19 +44,25 @@ const AudioPlayer = (props) => {
     }
   };
 
-  useEffect(()=>{
-    if(isPlaying){
+  useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+  useEffect(() => {
+    if (isPlaying) {
       audioRef.current.play();
-    }else{
+    } else {
       audioRef.current.pause();
     }
-  },[isPlaying])
+  }, [isPlaying]);
 
   useEffect(() => {
     setRelease(releases[trackIndex]);
     audioRef.current.pause();
     audioRef.current = new Audio(release.audiofile_url);
-  }, [trackIndex]);
+  }, [release.audiofile_url, releases, trackIndex]);
 
   console.log({ release, audioRef, trackIndex, isPlaying });
 
