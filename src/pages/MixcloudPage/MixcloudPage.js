@@ -9,7 +9,7 @@ export const MixcloudPage = () => {
   const { releases, pager, handleNextPage } = useReleases();
 
   if (releases.length === 0) {
-    return <div>Загрузка...</div>;
+    return <div></div>;
   }
 
   return (

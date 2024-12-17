@@ -41,13 +41,13 @@ export const ProfilePage = () => (
     <div className="stack-section">
       <div className="stack">
         <div className="technology">
-          <img src={htmllogo}></img>
+          <img src={htmllogo} alt = ""></img>
         </div>
         <div className="technology">
-          <img src={csslogo}></img>
+          <img src={csslogo} alt = ""></img>
         </div>
         <div className="technology">
-          <img src={jslogo}></img>
+          <img src={jslogo} alt = ""></img>
         </div>
       </div>
     </div>
