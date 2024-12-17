@@ -1,28 +1,55 @@
 import avatar from "../../img/photo.jpg";
 import "./ProfilePage.css";
-import "./ProfilePageAdaptive.css";
-import telegram from '../../img/icons/telegram.svg';
-import vk from '../../img/icons/vk.svg';
-import github from '../../img/icons/github.svg';
+import telegram from "../../img/icons/telegram.svg";
+import vk from "../../img/icons/vk.svg";
+import github from "../../img/icons/github.svg";
+import htmllogo from "../../img/htmllogo.png";
+import csslogo from "../../img/csslogo.png";
+import jslogo from "../../img/jslogo.png";
 
 export const ProfilePage = () => (
-  <div className="section">
-    <div className="section-card">
-      <div className="section-card-bio">
-        <div className="section-card-bio__text">
-          <h1>Веб-разработчик</h1>
-          <h2><mark>Воронков Вадим</mark></h2>
-          <p>Привет! Я занимаюсь версткой адаптивных и интерактивных сайтов</p>
-          <p className = "messenger-links">
-            <a href = "https://t.me/vaadimvoronkov"><img className = "link-block" src = {telegram} alt = "tg"></img></a>
-            <a href = "https://vk.com/vaadimvoronkov"><img className = "link-block" src = {vk} alt = "vk"></img></a>
-            <a href = "https://github.com/vaadimvoronkov"><img className = "link-block" src = {github} alt = "github"></img></a>
-          </p>
+  <>
+    <div className="profile-section">
+      <div className="card">
+        <div className="bio">
+          <div className="bio-text">
+            <h1>Веб-разработчик</h1>
+            <h2>
+              <mark>Воронков Вадим</mark>
+            </h2>
+            <p>
+              Привет! Я занимаюсь версткой адаптивных и интерактивных сайтов
+            </p>
+            <p className="messengers">
+              <a href="https://t.me/vaadimvoronkov">
+                <img className="icon" src={telegram} alt="tg" />
+              </a>
+              <a href="https://vk.com/vaadimvoronkov">
+                <img className="icon" src={vk} alt="vk" />
+              </a>
+              <a href="https://github.com/vaadimvoronkov">
+                <img className="icon" src={github} alt="github" />
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="photo">
+          <img className="avatar" src={avatar} alt="avatar" />
         </div>
       </div>
-      <div className="section-card-info__photo">
-        <img className="avatar" src={avatar} alt="avatar"></img>
+    </div>
+    <div className="stack-section">
+      <div className="stack">
+        <div className="technology">
+          <img src={htmllogo}></img>
+        </div>
+        <div className="technology">
+          <img src={csslogo}></img>
+        </div>
+        <div className="technology">
+          <img src={jslogo}></img>
+        </div>
       </div>
     </div>
-  </div>
+  </>
 );
