@@ -4,14 +4,15 @@
   flex-direction: column;
   width: 100%;
   bottom: 0%;
-  background: rgb(242, 242, 242);
+  background: white;
+  border-top: 1px solid black;
   font-size: 1rem;
 }
 .audio-navigation-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 25px 10px 25px;
+  padding: 10px 33px 10px 25px;
 }
 .audio-navigation-container-info {
   display: flex;

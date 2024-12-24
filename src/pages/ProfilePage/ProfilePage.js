@@ -6,6 +6,7 @@ import github from "../../img/icons/github.svg";
 import htmllogo from "../../img/htmllogo.png";
 import csslogo from "../../img/csslogo.png";
 import jslogo from "../../img/jslogo.png";
+import Technology from "../../components/ProfilePage/Technology";
 
 export const ProfilePage = () => (
   <>
@@ -40,15 +41,9 @@ export const ProfilePage = () => (
     </div>
     <div className="stack-section">
       <div className="stack">
-        <div className="technology">
-          <img src={htmllogo} alt = ""></img>
-        </div>
-        <div className="technology">
-          <img src={csslogo} alt = ""></img>
-        </div>
-        <div className="technology">
-          <img src={jslogo} alt = ""></img>
-        </div>
+        <Technology image = {htmllogo} name = {"HTML"}></Technology>
+        <Technology image = {csslogo} name = {"CSS"}></Technology>
+        <Technology image = {jslogo} name = {"JavaScript"}></Technology>
       </div>
     </div>
   </>
