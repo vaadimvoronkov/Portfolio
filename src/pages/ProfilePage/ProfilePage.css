@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
 .profile-section {
   min-height: 100vh;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,8 +18,8 @@
 }
 
 .avatar {
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   border-radius: 48% 52% 70% 30% / 30% 57% 43% 70%;
 }
 
@@ -74,14 +74,11 @@ mark {
   }
 }
 
-.stack-section {
-  min-height: 100vh;
+.stack-section h2 {
+  font-size: 6rem;
+  text-align: center;
 }
 .stack {
   display: flex;
   justify-content: space-around;
-}
-.technology img{
-  width: 350px;
-  height: 350px;
 }
