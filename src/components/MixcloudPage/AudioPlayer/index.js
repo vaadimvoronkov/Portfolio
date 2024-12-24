@@ -68,10 +68,6 @@ const AudioPlayer = (props) => {
 
   return (
     <div className="audio-player">
-      <div className="audio-timeline-container">
-        <div>0:00</div>
-        <div></div>
-      </div>
       <div className="audio-navigation-container">
         <div className="audio-navigation-container-buttons">
           <button onClick={handlePrevPlaylist}>
