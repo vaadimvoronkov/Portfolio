@@ -23,13 +23,13 @@ export const ProfilePage = () => (
             </p>
             <p className="messengers">
               <a href="https://t.me/vaadimvoronkov">
-                <img className="icon" src={telegram} alt="tg" />
+                <img className="messenger-icon" src={telegram} alt="tg" />
               </a>
               <a href="https://vk.com/vaadimvoronkov">
-                <img className="icon" src={vk} alt="vk" />
+                <img className="messenger-icon" src={vk} alt="vk" />
               </a>
               <a href="https://github.com/vaadimvoronkov">
-                <img className="icon" src={github} alt="github" />
+                <img className="messenger-icon" src={github} alt="github" />
               </a>
             </p>
           </div>
