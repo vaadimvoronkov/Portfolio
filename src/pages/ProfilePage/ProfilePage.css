@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+@font-face {
+  font-family: "Gilroy";
+  src: url("../../fonts/Gilroy-Regular.ttf");
+  font-weight: 400;
+}
 .profile-section {
   min-height: 100vh;
   display: flex;
@@ -60,7 +65,7 @@ mark {
   gap: 15px;
 }
 
-.messenger-icon {
+.messengers-icon {
   width: 40px;
   height: 40px;
 }
@@ -73,12 +78,16 @@ mark {
     background-size: 100%;
   }
 }
-
-.stack-section h2 {
-  font-size: 6rem;
-  text-align: center;
+.stack-section {
+  min-height: 100vh;
 }
 .stack {
   display: flex;
   justify-content: space-around;
 }
+.stack-section h2 {
+  font-size: 6rem;
+  text-align: center;
+  font-family: "Gilroy";
+}
+

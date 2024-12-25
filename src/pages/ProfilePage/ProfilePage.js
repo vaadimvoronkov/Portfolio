@@ -23,13 +23,13 @@ export const ProfilePage = () => (
             </p>
             <p className="messengers">
               <a href="https://t.me/vaadimvoronkov">
-                <img className="messenger-icon" src={telegram} alt="tg" />
+                <img className="messengers-icon" src={telegram} alt="tg" />
               </a>
               <a href="https://vk.com/vaadimvoronkov">
-                <img className="messenger-icon" src={vk} alt="vk" />
+                <img className="messengers-icon" src={vk} alt="vk" />
               </a>
               <a href="https://github.com/vaadimvoronkov">
-                <img className="messenger-icon" src={github} alt="github" />
+                <img className="messengers-icon" src={github} alt="github" />
               </a>
             </p>
           </div>
@@ -41,9 +41,21 @@ export const ProfilePage = () => (
     </div>
     <div className="stack-section">
       <div className="stack">
-        <Technology image = {htmllogo} name = {"HTML"}></Technology>
-        <Technology image = {csslogo} name = {"CSS"}></Technology>
-        <Technology image = {jslogo} name = {"JavaScript"}></Technology>
+        <Technology
+          image={htmllogo}
+          name={"HTML"}
+          desc={"Используется для разметки"}
+        ></Technology>
+        <Technology
+          image={jslogo}
+          name={"JAVASCRIPT"}
+          desc={"Используется для добавления логики"}
+        ></Technology>
+        <Technology
+          image={csslogo}
+          name={"CSS"}
+          desc={"Используется для стилизации"}
+        ></Technology>
       </div>
     </div>
   </>
