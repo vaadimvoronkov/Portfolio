@@ -17,8 +17,7 @@ const AudioPlayer = (props) => {
 
   const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef();
-  const isReady = useRef(false);
-  const { duration } = audioRef.current;
+  const { duration } = audioRef.current.duration;
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
@@ -43,7 +42,6 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
   };
-
   useEffect(() => {
     return () => {
       audioRef.current.pause();
@@ -65,9 +63,11 @@ const AudioPlayer = (props) => {
   }, [release.audiofile_url, releases, trackIndex]);
 
   console.log({ release, audioRef, trackIndex, isPlaying });
+  console.log(duration)
 
   return (
     <div className="audio-player">
+      <input type="range"/>
       <div className="audio-navigation-container">
         <div className="audio-navigation-container-buttons">
           <button onClick={handlePrevPlaylist}>
