@@ -6,17 +6,24 @@
   bottom: 0%;
   background: white;
   font-size: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.226);
+  height: 105px;
 }
 .audio-navigation-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 5px 33px 10px 25px;
+  justify-content: space-between;
 }
 .audio-navigation-container-info {
   display: flex;
   align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  border-radius: 5px;
+  white-space: nowrap;
+  min-width: 305px;
   gap: 15px;
+  padding: 5px;
 }
 .audio-navigation-container-info img {
   width: 55px;
@@ -25,6 +32,7 @@
 .audio-navigation-container-buttons {
   display: flex;
   align-items: center;
+  border-radius: 5px;
 }
 .audio-navigation-container-buttons button {
   background: transparent;
@@ -39,6 +47,11 @@
   filter: invert(150%) grayscale(150%) saturate(2000%) brightness(50%);
   border: 2px solid black;
   border-radius: 5px;
+}
+.audio-navigation-container-options{
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
 }
 .audio-navigation-container-buttons img:hover {
   filter: none;
