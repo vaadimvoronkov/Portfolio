@@ -65,13 +65,6 @@ const AudioPlayer = (props) => {
   };
 
   useEffect(() => {
-    return () => {
-      audioRef.current.pause();
-      clearInterval(intervalRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
       startTimer();
