@@ -17,7 +17,6 @@ const AudioPlayer = (props) => {
 
   const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef();
-  const { duration } = audioRef.current.duration;
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
@@ -27,6 +26,7 @@ const AudioPlayer = (props) => {
     }
     setIsPlaying(false);
   };
+
   const handlePrevPlaylist = () => {
     if (trackIndex - 1 >= 0) {
       setTrackIndex(trackIndex - 1);
@@ -35,6 +35,7 @@ const AudioPlayer = (props) => {
     }
     setIsPlaying(false);
   };
+
   const handlePlayPausePlaylist = () => {
     if (isPlaying === false) {
       setIsPlaying(true);
@@ -42,48 +43,74 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
   };
+
+  const updateProgressBar = () => {
+    if (!isPlaying || !audioRef.current) return;
+    setTrackProgress(audioRef.current.currentTime);
+  };
+
+  const startTimer = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(updateProgressBar, 100);
+  };
+
+  const stopTimer = () => {
+    clearInterval(intervalRef.current);
+  };
+
+  const onSeekChange = (e) => {
+    const seekTo = e.target.value;
+    setTrackProgress(seekTo);
+    audioRef.current.currentTime = seekTo;
+  };
+
   useEffect(() => {
     return () => {
       audioRef.current.pause();
       clearInterval(intervalRef.current);
     };
   }, []);
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
+      startTimer();
     } else {
       audioRef.current.pause();
+      stopTimer();
     }
-  }, [isPlaying]);
+  }, [isPlaying, startTimer]);
 
   useEffect(() => {
     setRelease(releases[trackIndex]);
     audioRef.current.pause();
-    audioRef.current = new Audio(release.audiofile_url);
+    audioRef.current.src = release.audiofile_url;
+    audioRef.current.load();
+    setTrackProgress(0);
   }, [release.audiofile_url, releases, trackIndex]);
 
-  console.log({ release, audioRef, trackIndex, isPlaying });
-  console.log(duration)
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    audioElement.addEventListener("loadedmetadata", () => {
+      setRelease((prevRelease) => ({
+        ...prevRelease,
+        duration: Math.floor(audioElement.duration),
+      }));
+    });
+  }, [release.audiofile_url]);
 
   return (
     <div className="audio-player">
-      <input type="range"/>
+      <input
+        type="range"
+        value={trackProgress}
+        min={0}
+        max={release.duration || 100}
+        step="1"
+        onChange={onSeekChange}
+      />
+
       <div className="audio-navigation-container">
-        <div className="audio-navigation-container-buttons">
-          <button onClick={handlePrevPlaylist}>
-            <img src={prevIcon} alt="prev"></img>
-          </button>
-          <button onClick={handlePlayPausePlaylist}>
-            {isPlaying === true ? (
-              <img src={pauseIcon} alt="pause"></img>
-            ) : (
-              <img src={playIcon} alt="play"></img>
-            )}
-          </button>
-          <button onClick={handleNextPlaylist}>
-            <img src={nextIcon} alt="next"></img>
-          </button>
-        </div>
         <div className="audio-navigation-container-info">
           <div>
             <div>{release.title}</div>
@@ -91,6 +118,25 @@ const AudioPlayer = (props) => {
           </div>
           <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
+
+        <div className="audio-navigation-container-buttons">
+          <button onClick={handlePrevPlaylist}>
+            <img src={prevIcon} alt="prev"></img>
+          </button>
+
+          <button onClick={handlePlayPausePlaylist}>
+            {isPlaying === true ? (
+              <img src={pauseIcon} alt="pause"></img>
+            ) : (
+              <img src={playIcon} alt="play"></img>
+            )}
+          </button>
+
+          <button onClick={handleNextPlaylist}>
+            <img src={nextIcon} alt="next"></img>
+          </button>
+        </div>
+
         <div className="audio-navigation-container-options">Options</div>
       </div>
     </div>
