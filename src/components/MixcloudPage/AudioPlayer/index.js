@@ -1,4 +1,5 @@
 import "./styles.css";
+import styles from "./player.module.css";
 import React, { useState, useRef, useEffect } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
@@ -93,7 +94,7 @@ const AudioPlayer = (props) => {
   }, [release.audiofile_url]);
 
   return (
-    <div className="audio-player">
+    <div className={styles.audioPlayer}>
       <input
         type="range"
         value={trackProgress}
