@@ -1,4 +1,4 @@
-.audio-player {
+.audioPlayer {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -9,13 +9,13 @@
   border-top: 1px solid rgba(0, 0, 0, 0.226);
   height: 105px;
 }
-.audio-navigation-container {
+.navigation {
   display: flex;
   align-items: center;
   padding: 5px 33px 10px 25px;
   justify-content: space-between;
 }
-.audio-navigation-container-info {
+.audioInformation {
   display: flex;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.151);
@@ -25,36 +25,35 @@
   gap: 15px;
   padding: 5px;
 }
-.audio-navigation-container-info img {
+.audioInformation img {
   width: 55px;
   width: 55px;
 }
-.audio-navigation-container-buttons {
+.navigationButtons {
   display: flex;
   align-items: center;
   border-radius: 5px;
 }
-.audio-navigation-container-buttons button {
+.navigationButtons button {
   background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: none;;
+  border: none;
 }
-.audio-navigation-container-buttons img {
+.navigationButtons img {
   width: 45px;
   height: 45px;
   filter: invert(150%) grayscale(150%) saturate(2000%) brightness(50%);
   border: 2px solid black;
   border-radius: 5px;
 }
-.audio-navigation-container-options{
+.navigationButtons img:hover {
+  filter: none;
+  cursor: pointer;
+}
+.options {
   min-width: 300px;
   display: flex;
   justify-content: center;
 }
-.audio-navigation-container-buttons img:hover {
-  filter: none;
-  cursor: pointer;
-}
-
