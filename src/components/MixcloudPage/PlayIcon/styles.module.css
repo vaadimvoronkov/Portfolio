@@ -8,23 +8,19 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
+  opacity: 1;
 }
 
-.play-icon,
-.pause-icon {
+.play,
+.pause {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
 }
-
-.release-image-container:hover .icon {
-  opacity: 1;
-}
-
-.play-icon-svg,
-.pause-icon-svg {
+.playSvg,
+.pauseSvg {
   fill: white;
   width: 25px;
   height: 25px;
