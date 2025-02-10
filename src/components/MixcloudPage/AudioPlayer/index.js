@@ -9,9 +9,9 @@ const imageUrl = "https://aerostatbg.ru";
 
 const AudioPlayer = (props) => {
   const { releases } = props;
+  const [state, setState] = useState("stop");
 
   const [trackIndex, setTrackIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [release, setRelease] = useState(releases[trackIndex]);
   const [trackProgress, setTrackProgress] = useState(0);
 
@@ -20,32 +20,30 @@ const AudioPlayer = (props) => {
 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
-      setTrackIndex(trackIndex + 1);
+      playTrackByIndex(trackIndex + 1);
     } else {
-      setTrackIndex(0);
+      playTrackByIndex(0);
     }
-    setIsPlaying(false);
   };
 
   const handlePrevPlaylist = () => {
     if (trackIndex - 1 >= 0) {
-      setTrackIndex(trackIndex - 1);
+      playTrackByIndex(trackIndex - 1);
     } else {
-      setTrackIndex(releases.length - 1);
+      playTrackByIndex(releases.length - 1);
     }
-    setIsPlaying(false);
   };
 
   const handlePlayPausePlaylist = () => {
-    if (isPlaying === false) {
-      setIsPlaying(true);
-    } else {
-      setIsPlaying(false);
+    if (state === "stop") {
+      startAudio();
+    } else if (state === "play") {
+      stopAudio();
     }
   };
 
   const updateProgressBar = () => {
-    if (!isPlaying || !audioRef.current) return;
+    if (state === "stop" || !audioRef.current) return;
     setTrackProgress(audioRef.current.currentTime);
   };
 
@@ -64,23 +62,50 @@ const AudioPlayer = (props) => {
     audioRef.current.currentTime = seekTo;
   };
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-      startTimer();
-    } else {
+  function startAudio() {
+    if (state === "stop") {
+      setState("loading");
+      audioRef.current
+        .play()
+        .then(() => {
+          startTimer();
+          setState("play");
+        })
+        .catch(() => {
+          setState("stop");
+        });
+    }
+  }
+
+  function stopAudio() {
+    if (state === "play") {
       audioRef.current.pause();
+      setState("stop");
       stopTimer();
     }
-  }, [isPlaying, startTimer]);
+  }
 
-  useEffect(() => {
-    setRelease(releases[trackIndex]);
-    audioRef.current.pause();
+  function playTrackByIndex(index) {
+    setRelease(releases[index]);
+    setTrackIndex(index);
+
+    audioRef.current.stop();
     audioRef.current.src = release.audiofile_url;
     audioRef.current.load();
+
+    setState("loading");
+    audioRef.current
+      .play()
+      .then(() => {
+        startTimer();
+        setState("play");
+      })
+      .catch(() => {
+        setState("stop");
+      });
+
     setTrackProgress(0);
-  }, [release.audiofile_url, releases, trackIndex]);
+  }
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -118,7 +143,7 @@ const AudioPlayer = (props) => {
           </button>
 
           <button onClick={handlePlayPausePlaylist}>
-            {isPlaying === true ? (
+            {state === "play" ? (
               <img src={pauseIcon} alt="pause"></img>
             ) : (
               <img src={playIcon} alt="play"></img>
