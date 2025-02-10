@@ -1,4 +1,4 @@
-.release-item {
+.release {
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -11,47 +11,47 @@
   transition: border 1s;
   min-width: 1000px;
 }
-.mixcloud-container h2 {
+
+.release:hover {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.release h2 {
   font-size: 25px;
   font-weight: bold;
   text-decoration: underline;
 }
 
-.release-item:hover {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.release-header {
+.releaseHeader {
   display: flex;
   flex-direction: column;
   width: 200px;
 }
 
-.release-image-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-}
-
-.release-image {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.release-tracklist {
+.imageContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.tracklistContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.tracklist-compositions {
+.tracklist {
   width: 400px;
 }
-.rating-number {
+.rating {
   color: #90b494;
 }
 
-.vote-count-number {
+.votes {
   color: #208aae;
 }
-

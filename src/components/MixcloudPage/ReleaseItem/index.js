@@ -1,4 +1,4 @@
-import "./styles.css";
+import styles from "./styles.module.css";
 import PlayIcon from "../PlayIcon";
 import { useState } from "react";
 
@@ -16,38 +16,38 @@ const ReleaseItem = (props) => {
     }
   };
   return (
-    <li key={index} className="release-item">
-      <div className="release-header">
+    <li key={index} className={styles.release}>
+      <div className={styles.releaseHeader}>
         <h2>{release.title}</h2>
         <p>{release.number}</p>
         <div
-          className="release-image-container"
+          className={styles.imageContainer}
           onClick={() => handlePlayPause(index)}
         >
           <img
             src={`${imageUrl}${release.image_url}`}
             alt=""
-            className="release-image"
+            className={styles.image}
           />
           <PlayIcon isPlaying={isPlaying} index={index} />
         </div>
       </div>
-      <div className="release-tracklist">
+      <div className={styles.tracklistContainer}>
         <h2>Список треков:</h2>
-        <div className="tracklist-compositions">
+        <div className={styles.tracklist}>
           {release.composition_list.map((composition, index) => (
             <div key={index}>{composition.composition_name}</div>
           ))}
         </div>
       </div>
-      <div className="release-info">
+      <div>
         <p>Дата: {release.date}</p>
         <p>
-          Оценка: <span className="rating-number">{release.rating}</span>
+          Оценка: <span className={styles.rating}>{release.rating}</span>
         </p>
         <p>
           Количество оценок:{" "}
-          <span className="vote-count-number">{release.vote_count}</span>
+          <span className={styles.votes}>{release.vote_count}</span>
         </p>
       </div>
     </li>
