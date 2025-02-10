@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "./Navigation.css";
+import styles from "./Navigation.module.css";
 
 function Navigation() {
   return (
     <nav>
-      <ul className="navigation">
+      <ul className={styles.navigation}>
         <li>
           <Link to="/">Profile</Link>
         </li>

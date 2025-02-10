@@ -1,11 +1,11 @@
-import "./Technology.css";
+import styles from"./Technology.module.css";
 
 function Technology(props) {
   return (
-    <div className="technology">
+    <div className={styles.technology}>
       <img src={props.image} alt=""></img>
-      <p className = "name">{props.name}</p>
-      <p className = "desc">{props.desc}</p>
+      <p className = {styles.name}>{props.name}</p>
+      <p className = {styles.desc}>{props.desc}</p>
     </div>
   );
 }

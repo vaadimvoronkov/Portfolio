@@ -1,9 +1,9 @@
-import "./styles.css";
+import styles from "./styles.module.css";
 
 const HelperMenu = () => {
   return (
-    <div className="menu">
-      <div className="menu-block wdth70perc">
+    <div className={styles.menu}>
+      <div className={styles.leftBlock}>
         <form method="get">
           <input
             name="search"
@@ -12,9 +12,7 @@ const HelperMenu = () => {
           ></input>
         </form>
       </div>
-      <div className="menu-block wdth30perc">
-        
-      </div>
+      <div className={styles.rightBlock}></div>
     </div>
   );
 };
