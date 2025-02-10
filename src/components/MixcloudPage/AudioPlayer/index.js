@@ -1,5 +1,4 @@
-import "./styles.css";
-import styles from "./player.module.css";
+import styles from "./styles.module.css";
 import React, { useState, useRef, useEffect } from "react";
 import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
@@ -104,8 +103,8 @@ const AudioPlayer = (props) => {
         onChange={onSeekChange}
       />
 
-      <div className="audio-navigation-container">
-        <div className="audio-navigation-container-info">
+      <div className={styles.navigation}>
+        <div className={styles.audioInformation}>
           <div>
             <div>{release.title}</div>
             <div>{release.number}</div>
@@ -113,7 +112,7 @@ const AudioPlayer = (props) => {
           <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
 
-        <div className="audio-navigation-container-buttons">
+        <div className={styles.navigationButtons}>
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
           </button>
@@ -131,7 +130,7 @@ const AudioPlayer = (props) => {
           </button>
         </div>
 
-        <div className="audio-navigation-container-options">Options</div>
+        <div className={styles.options}>Options</div>
       </div>
     </div>
   );
