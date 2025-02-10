@@ -9,8 +9,8 @@ const imageUrl = "https://aerostatbg.ru";
 
 const AudioPlayer = (props) => {
   const { releases } = props;
-  const [state, setState] = useState("stop");
 
+  const [audioState, setAudioState] = useState("stop");
   const [trackIndex, setTrackIndex] = useState(0);
   const [release, setRelease] = useState(releases[trackIndex]);
   const [trackProgress, setTrackProgress] = useState(0);
@@ -35,15 +35,15 @@ const AudioPlayer = (props) => {
   };
 
   const handlePlayPausePlaylist = () => {
-    if (state === "stop") {
+    if (audioState === "stop") {
       startAudio();
-    } else if (state === "play") {
+    } else if (audioState === "play") {
       stopAudio();
     }
   };
 
   const updateProgressBar = () => {
-    if (state === "stop" || !audioRef.current) return;
+    if (audioState === "stop" || !audioRef.current) return;
     setTrackProgress(audioRef.current.currentTime);
   };
 
@@ -63,24 +63,24 @@ const AudioPlayer = (props) => {
   };
 
   function startAudio() {
-    if (state === "stop") {
-      setState("loading");
+    if (audioState === "stop") {
+      setAudioState("loading");
       audioRef.current
         .play()
         .then(() => {
           startTimer();
-          setState("play");
+          setAudioState("play");
         })
         .catch(() => {
-          setState("stop");
+          setAudioState("stop");
         });
     }
   }
 
   function stopAudio() {
-    if (state === "play") {
+    if (audioState === "play") {
       audioRef.current.pause();
-      setState("stop");
+      setAudioState("stop");
       stopTimer();
     }
   }
@@ -93,17 +93,16 @@ const AudioPlayer = (props) => {
     audioRef.current.src = release.audiofile_url;
     audioRef.current.load();
 
-    setState("loading");
+    setAudioState("loading");
     audioRef.current
       .play()
       .then(() => {
         startTimer();
-        setState("play");
+        setAudioState("play");
       })
       .catch(() => {
-        setState("stop");
+        setAudioState("stop");
       });
-
     setTrackProgress(0);
   }
 
@@ -127,7 +126,6 @@ const AudioPlayer = (props) => {
         step="1"
         onChange={onSeekChange}
       />
-
       <div className={styles.navigation}>
         <div className={styles.audioInformation}>
           <div>
@@ -136,25 +134,21 @@ const AudioPlayer = (props) => {
           </div>
           <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
-
         <div className={styles.navigationButtons}>
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
           </button>
-
           <button onClick={handlePlayPausePlaylist}>
-            {state === "play" ? (
+            {audioState === "play" ? (
               <img src={pauseIcon} alt="pause"></img>
             ) : (
               <img src={playIcon} alt="play"></img>
             )}
           </button>
-
           <button onClick={handleNextPlaylist}>
             <img src={nextIcon} alt="next"></img>
           </button>
         </div>
-
         <div className={styles.options}>Options</div>
       </div>
     </div>
