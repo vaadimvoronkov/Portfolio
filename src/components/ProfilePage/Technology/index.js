@@ -1,4 +1,4 @@
-import styles from"./Technology.module.css";
+import styles from"./styles.module.css";
 
 function Technology(props) {
   return (

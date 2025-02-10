@@ -4,7 +4,7 @@
   src: url("../../fonts/Gilroy-Regular.ttf");
   font-weight: 400;
 }
-.profile-section {
+.profileContainer {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   line-height: 1.5;
 }
 
-.card {
+.profile {
   display: flex;
   max-width: 1100px;
   width: 80%;
@@ -21,8 +21,24 @@
   gap: 80px;
   line-height: 1.5;
 }
+.profile h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
 
-.avatar {
+.profile h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.photo {
   width: 450px;
   height: 450px;
   border-radius: 48% 52% 70% 30% / 30% 57% 43% 70%;
@@ -34,23 +50,14 @@
   justify-content: center;
 }
 
-.card h1 {
-  font-size: 3.5rem;
-  font-weight: bold;
+@keyframes highlight {
+  from {
+    background-size: 0%;
+  }
+  to {
+    background-size: 100%;
+  }
 }
-
-.card h2 {
-  font-size: 2.5rem;
-  font-weight: 200;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
 mark {
   background-color: transparent;
   background-image: linear-gradient(#dfecff, #dfecff);
@@ -65,29 +72,20 @@ mark {
   gap: 15px;
 }
 
-.messengers-icon {
+.messengerIcon {
   width: 40px;
   height: 40px;
 }
 
-@keyframes highlight {
-  from {
-    background-size: 0%;
-  }
-  to {
-    background-size: 100%;
-  }
-}
-.stack-section {
+.stackContainer {
   min-height: 100vh;
+}
+.stackContainer h2 {
+  font-size: 6rem;
+  text-align: center;
+  font-family: "Gilroy";
 }
 .stack {
   display: flex;
   justify-content: space-around;
 }
-.stack-section h2 {
-  font-size: 6rem;
-  text-align: center;
-  font-family: "Gilroy";
-}
-
