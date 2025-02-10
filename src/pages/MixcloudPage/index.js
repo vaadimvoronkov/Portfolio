@@ -3,7 +3,7 @@ import Pagination from "../../components/MixcloudPage/Pagination";
 import HelperMenu from "../../components/MixcloudPage/HelperMenu";
 import AudioPlayer from "../../components/MixcloudPage/AudioPlayer";
 import { useReleases } from "./hooks";
-import "./MixcloudPage.css";
+import styles from "./styles.module.css";
 
 export const MixcloudPage = () => {
   const { releases, pager, handleNextPage } = useReleases();
@@ -13,9 +13,9 @@ export const MixcloudPage = () => {
   }
 
   return (
-    <div className="mixcloud-container">
+    <div className={styles.mixcloud}>
       <HelperMenu />
-      <ul className="release-list">
+      <ul className={styles.releases}>
         {releases.map((release, index) => (
           <ReleaseItem key={release.number} release={release} index={index}></ReleaseItem>
         ))}
