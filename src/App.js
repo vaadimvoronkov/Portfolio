@@ -8,7 +8,7 @@ import { MixcloudPage } from "./pages/MixcloudPage/index.js";
 function App() {
   return (
     <div className="wrapper">
-      <div className="container">
+      <div>
         <Navigation />
         <Routes>
           <Route path="/" element={<ProfilePage />} />
