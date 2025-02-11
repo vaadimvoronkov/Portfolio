@@ -6,19 +6,18 @@
   bottom: 0%;
   background: white;
   font-size: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.226);
-  height: 105px;
+  border-top: 1px solid rgba(0, 0, 0, 0.084);
+  height: 100px;
 }
 .navigation {
   display: flex;
   align-items: center;
-  padding: 5px 33px 10px 25px;
+  padding: 5px 0px 0px 15px;
   justify-content: space-between;
 }
 .audioInformation {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.151);
   border-radius: 5px;
   white-space: nowrap;
   min-width: 305px;
@@ -29,28 +28,31 @@
   width: 55px;
   width: 55px;
 }
-.navigationButtons {
+.buttonsContainer {
   display: flex;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
 }
-.navigationButtons button {
+.buttonsContainer button {
   background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: none;
 }
-.navigationButtons img {
+.buttonsContainer img {
   width: 45px;
   height: 45px;
   filter: invert(150%) grayscale(150%) saturate(2000%) brightness(50%);
-  border: 2px solid black;
-  border-radius: 5px;
 }
-.navigationButtons img:hover {
+.buttonsContainer img:hover {
   filter: none;
   cursor: pointer;
+}
+.playpauseButton img{
+  width: 60px;
+  height: 60px;
 }
 .options {
   min-width: 300px;
