@@ -89,7 +89,7 @@ const AudioPlayer = (props) => {
     setRelease(releases[index]);
     setTrackIndex(index);
 
-    audioRef.current.stop();
+    audioRef.current.pause();
     audioRef.current.src = release.audiofile_url;
     audioRef.current.load();
 
@@ -134,11 +134,11 @@ const AudioPlayer = (props) => {
           </div>
           <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
-        <div className={styles.navigationButtons}>
+        <div className={styles.buttonsContainer}>
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
           </button>
-          <button onClick={handlePlayPausePlaylist}>
+          <button className = {styles.playpauseButton}onClick={handlePlayPausePlaylist}>
             {audioState === "play" ? (
               <img src={pauseIcon} alt="pause"></img>
             ) : (
