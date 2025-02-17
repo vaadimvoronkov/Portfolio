@@ -27,5 +27,16 @@ export const useReleases = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, [pageNumber]);
 
+
+  //перенести получение списка аудио в стор, и использовать новый юзэффект
+  useEffect(() => {
+
+    
+  
+    //dispatch(fetchReleases()) почитать про асинхронные экшены
+
+  }, [])
+  
+
   return { releases, pager, handleNextPage };
 };
