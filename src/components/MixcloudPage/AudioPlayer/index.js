@@ -4,13 +4,18 @@ import playIcon from "../../../img/icons/player-play.svg";
 import pauseIcon from "../../../img/icons/player-pause.svg";
 import nextIcon from "../../../img/icons/player-next.svg";
 import prevIcon from "../../../img/icons/player-previous.svg";
+import { useSelector, useDispatch } from "react-redux";
+import { play, loading, pause } from "../../../store/slices/audioControlSlice";
 
 const imageUrl = "https://aerostatbg.ru";
+const selectAudioState = (state) => state.audioControl.value; // получаем данные из стора
 
 const AudioPlayer = (props) => {
-  const { releases } = props;
+  const { releases } = props; 
 
-  const [audioState, setAudioState] = useState("stop");
+  const dispatch = useDispatch(); //функция, позволяющая менять и обновлять state в store
+  const audioState = useSelector(selectAudioState);
+
   const [trackIndex, setTrackIndex] = useState(0);
   const [release, setRelease] = useState(releases[trackIndex]);
   const [trackProgress, setTrackProgress] = useState(0);
@@ -18,6 +23,18 @@ const AudioPlayer = (props) => {
   const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef();
 
+  //Функции для изменения audioControl state в store
+  const setPlay = () => {
+    dispatch(play());
+  };
+  const setPause = () => {
+    dispatch(pause());
+  };
+  const setLoading = () => {
+    dispatch(loading());
+  };
+
+  //Функции, которые позволяют переключать, воспроизводить, останавливать аудио 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       playTrackByIndex(trackIndex + 1);
@@ -42,6 +59,7 @@ const AudioPlayer = (props) => {
     }
   };
 
+  //Функции, которые позволяют управлять таймлайном, а также запускают таймер
   const updateProgressBar = () => {
     if (audioState === "stop" || !audioRef.current) return;
     setTrackProgress(audioRef.current.currentTime);
@@ -64,15 +82,15 @@ const AudioPlayer = (props) => {
 
   function startAudio() {
     if (audioState === "stop") {
-      setAudioState("loading");
+      setLoading();
       audioRef.current
         .play()
         .then(() => {
           startTimer();
-          setAudioState("play");
+          setPlay();
         })
         .catch(() => {
-          setAudioState("stop");
+          setPause();
         });
     }
   }
@@ -80,7 +98,7 @@ const AudioPlayer = (props) => {
   function stopAudio() {
     if (audioState === "play") {
       audioRef.current.pause();
-      setAudioState("stop");
+      setPause();
       stopTimer();
     }
   }
@@ -93,15 +111,15 @@ const AudioPlayer = (props) => {
     audioRef.current.src = release.audiofile_url;
     audioRef.current.load();
 
-    setAudioState("loading");
+    setLoading();
     audioRef.current
       .play()
       .then(() => {
         startTimer();
-        setAudioState("play");
+        setPlay();
       })
       .catch(() => {
-        setAudioState("stop");
+        setPause();
       });
     setTrackProgress(0);
   }
@@ -138,7 +156,10 @@ const AudioPlayer = (props) => {
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
           </button>
-          <button className = {styles.playpauseButton}onClick={handlePlayPausePlaylist}>
+          <button
+            className={styles.playpauseButton}
+            onClick={handlePlayPausePlaylist}
+          >
             {audioState === "play" ? (
               <img src={pauseIcon} alt="pause"></img>
             ) : (
