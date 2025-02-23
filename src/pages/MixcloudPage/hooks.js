@@ -1,42 +1,32 @@
-import { useEffect, useState } from "react";
-
-const apiUrl =
-  "https://geschoss-sons-of-horus-59e6.twc1.net/mixcloud/releases?page=";
-
-const buildUrl = (url, number) => {
-  return `${url}${number}`;
-};
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchReleases,
+  selectPager,
+  selectReleases,
+  selectPageNumber,
+  setPageNumber
+} from "../../store/slices/releasesSlice";
 
 export const useReleases = () => {
-  const [releases, setReleases] = useState([]);
-  const [pager, setPager] = useState({});
-  const [pageNumber, setPageNumber] = useState(0);
+  const dispatch = useDispatch();
+
+  const releases = useSelector(selectReleases);
+  const pager = useSelector(selectPager);
+  const pageNumber = useSelector(selectPageNumber);
 
   const handleNextPage = () => {
-    if (pageNumber < pager.total_pages) setPageNumber(pageNumber + 1);
+    if (pageNumber < pager.total_pages) {
+      dispatch(setPageNumber(pageNumber + 1));
+    }
   };
 
+  console.log({ releases });
+  console.log(`page number: ${pageNumber}`)
+
   useEffect(() => {
-    fetch(buildUrl(apiUrl, pageNumber))
-      .then((response) => response.json())
-      .then((data) => {
-        setReleases((prevReleases) => [...prevReleases, ...data.rows]);
-        setPager(data.pager);
-        console.log(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [pageNumber]);
-
-
-  //перенести получение списка аудио в стор, и использовать новый юзэффект
-  useEffect(() => {
-
-    
-  
-    //dispatch(fetchReleases()) почитать про асинхронные экшены
-
-  }, [])
-  
+    dispatch(fetchReleases(pageNumber));
+  }, [pageNumber, dispatch]);
 
   return { releases, pager, handleNextPage };
 };
