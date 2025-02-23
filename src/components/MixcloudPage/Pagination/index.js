@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 
 const Pagination = (props) => {
   const { pager, handleNextPage } = props;
+  console.log({ pager, handleNextPage })
   return (
     <div className={styles.pagination}>
 
