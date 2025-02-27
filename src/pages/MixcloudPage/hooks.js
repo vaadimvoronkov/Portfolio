@@ -5,7 +5,9 @@ import {
   selectPager,
   selectReleases,
   selectPageNumber,
-  setPageNumber
+  setPageNumber,
+  
+  goToNextPage
 } from "../../store/slices/releasesSlice";
 
 export const useReleases = () => {
@@ -16,9 +18,7 @@ export const useReleases = () => {
   const pageNumber = useSelector(selectPageNumber);
 
   const handleNextPage = () => {
-    if (pageNumber < pager.total_pages) {
-      dispatch(setPageNumber(pageNumber + 1));
-    }
+      dispatch(goToNextPage());
   };
 
   console.log({ releases });

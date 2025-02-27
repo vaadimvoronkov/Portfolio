@@ -145,13 +145,6 @@ const AudioPlayer = (props) => {
         onChange={onSeekChange}
       />
       <div className={styles.navigation}>
-        <div className={styles.audioInformation}>
-          <div>
-            <div>{release.title}</div>
-            <div>{release.number}</div>
-          </div>
-          <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
-        </div>
         <div className={styles.buttonsContainer}>
           <button onClick={handlePrevPlaylist}>
             <img src={prevIcon} alt="prev"></img>
@@ -169,6 +162,13 @@ const AudioPlayer = (props) => {
           <button onClick={handleNextPlaylist}>
             <img src={nextIcon} alt="next"></img>
           </button>
+        </div>
+        <div className={styles.audioInformation}>
+          <div>
+            <div>{release.title}</div>
+            <div>{release.number}</div>
+          </div>
+          <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
         <div className={styles.options}>Options</div>
       </div>
