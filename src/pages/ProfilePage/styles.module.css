@@ -89,3 +89,59 @@ mark {
   display: flex;
   justify-content: space-around;
 }
+
+@media (max-width: 770px) {
+  .profileContainer {
+    display: flex;
+    line-height: 1.5;
+  }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 25px;
+    line-height: 1.5;
+  }
+  .profile h1 {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .profile h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .profile p {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .photo {
+    width: 350px;
+    height: 350px;
+  }
+
+  .bio {
+    display: flex;
+  }
+
+  .messengers {
+    justify-content: center;
+  }
+  .stackContainer {
+    min-height: 100vh;
+  }
+  .stackContainer h2 {
+    font-size: 6rem;
+    text-align: center;
+    font-family: "Gilroy";
+  }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
