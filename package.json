@@ -2,21 +2,42 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "ts-lint": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
+    "@types/node": "^22.13.8",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.5",
-    "react-scripts": "5.0.1",
-    "redux": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "redux": "^5.0.1",
+    "typescript": "^5.8.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.5.2"
+  },
+  "overrides": {
+    "typescript": "^5.8.2"
   },
   "eslintConfig": {
     "extends": [
