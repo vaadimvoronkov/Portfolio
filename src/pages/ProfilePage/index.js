@@ -6,6 +6,7 @@ import github from "../../img/icons/github.svg";
 import htmllogo from "../../img/htmllogo.png";
 import csslogo from "../../img/csslogo.png";
 import jslogo from "../../img/jslogo.png";
+import tslogo from "../../img/tslogo.png";
 import Technology from "../../components/ProfilePage/Technology/index.js";
 
 export const ProfilePage = () => (
@@ -55,6 +56,11 @@ export const ProfilePage = () => (
           image={csslogo}
           name={"CSS"}
           desc={"Используется для стилизации"}
+        ></Technology>
+         <Technology
+          image={tslogo}
+          name={"TYPESCRIPT"}
+          desc={"Используется для работы с типами"}
         ></Technology>
       </div>
     </div>
