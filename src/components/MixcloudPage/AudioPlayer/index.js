@@ -1,20 +1,20 @@
-import styles from "./styles.module.css";
-import React, { useState, useRef, useEffect } from "react";
-import playIcon from "../../../img/icons/player-play.svg";
-import pauseIcon from "../../../img/icons/player-pause.svg";
-import nextIcon from "../../../img/icons/player-next.svg";
-import prevIcon from "../../../img/icons/player-previous.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { play, loading, pause } from "../../../store/slices/audioControlSlice";
+import styles from './styles.module.css';
+import React, { useState, useRef, useEffect } from 'react';
+import playIcon from '../../../img/icons/player-play.svg';
+import pauseIcon from '../../../img/icons/player-pause.svg';
+import nextIcon from '../../../img/icons/player-next.svg';
+import prevIcon from '../../../img/icons/player-previous.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { play, loading, pause } from '../../../store/slices/audioControlSlice';
+import { selectAudioState } from '../../../store/slices/audioControlSlice';
+import { selectReleases } from '../../../store/slices/releasesSlice';
 
-const imageUrl = "https://aerostatbg.ru";
-const selectAudioState = (state) => state.audioControl.value; // получаем данные из стора
+const imageUrl = 'https://aerostatbg.ru';
 
-const AudioPlayer = (props) => {
-  const { releases } = props; 
-
-  const dispatch = useDispatch(); //функция, позволяющая менять и обновлять state в store
+const AudioPlayer = () => {
+  const dispatch = useDispatch();
   const audioState = useSelector(selectAudioState);
+  const releases = useSelector(selectReleases);
 
   const [trackIndex, setTrackIndex] = useState(0);
   const [release, setRelease] = useState(releases[trackIndex]);
@@ -23,7 +23,6 @@ const AudioPlayer = (props) => {
   const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef();
 
-  //Функции для изменения audioControl state в store
   const setPlay = () => {
     dispatch(play());
   };
@@ -34,7 +33,6 @@ const AudioPlayer = (props) => {
     dispatch(loading());
   };
 
-  //Функции, которые позволяют переключать, воспроизводить, останавливать аудио 
   const handleNextPlaylist = () => {
     if (trackIndex < releases.length - 1) {
       playTrackByIndex(trackIndex + 1);
@@ -52,16 +50,15 @@ const AudioPlayer = (props) => {
   };
 
   const handlePlayPausePlaylist = () => {
-    if (audioState === "stop") {
+    if (audioState === 'stop') {
       startAudio();
-    } else if (audioState === "play") {
+    } else if (audioState === 'play') {
       stopAudio();
     }
   };
 
-  //Функции, которые позволяют управлять таймлайном, а также запускают таймер
   const updateProgressBar = () => {
-    if (audioState === "stop" || !audioRef.current) return;
+    if (audioState === 'stop' || !audioRef.current) return;
     setTrackProgress(audioRef.current.currentTime);
   };
 
@@ -81,7 +78,7 @@ const AudioPlayer = (props) => {
   };
 
   function startAudio() {
-    if (audioState === "stop") {
+    if (audioState === 'stop') {
       setLoading();
       audioRef.current
         .play()
@@ -96,7 +93,7 @@ const AudioPlayer = (props) => {
   }
 
   function stopAudio() {
-    if (audioState === "play") {
+    if (audioState === 'play') {
       audioRef.current.pause();
       setPause();
       stopTimer();
@@ -126,7 +123,7 @@ const AudioPlayer = (props) => {
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    audioElement.addEventListener("loadedmetadata", () => {
+    audioElement.addEventListener('loadedmetadata', () => {
       setRelease((prevRelease) => ({
         ...prevRelease,
         duration: Math.floor(audioElement.duration),
@@ -153,7 +150,7 @@ const AudioPlayer = (props) => {
             className={styles.playpauseButton}
             onClick={handlePlayPausePlaylist}
           >
-            {audioState === "play" ? (
+            {audioState === 'play' ? (
               <img src={pauseIcon} alt="pause"></img>
             ) : (
               <img src={playIcon} alt="play"></img>
