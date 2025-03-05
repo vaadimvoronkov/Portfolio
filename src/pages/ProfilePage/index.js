@@ -1,13 +1,13 @@
-import avatar from "../../img/photo.jpg";
-import styles from "./styles.module.css";
-import telegram from "../../img/icons/telegram.svg";
-import vk from "../../img/icons/vk.svg";
-import github from "../../img/icons/github.svg";
-import htmllogo from "../../img/htmllogo.png";
-import csslogo from "../../img/csslogo.png";
-import jslogo from "../../img/jslogo.png";
-import tslogo from "../../img/tslogo.png";
-import Technology from "../../components/ProfilePage/Technology/index.js";
+import avatar from '../../img/photo.jpg';
+import styles from './styles.module.css';
+import telegram from '../../img/icons/telegram.svg';
+import vk from '../../img/icons/vk.svg';
+import github from '../../img/icons/github.svg';
+import htmllogo from '../../img/htmllogo.png';
+import csslogo from '../../img/csslogo.png';
+import jslogo from '../../img/jslogo.png';
+import tslogo from '../../img/tslogo.png';
+import Technology from '../../components/ProfilePage/Technology/index.js';
 
 export const ProfilePage = () => (
   <>
@@ -30,7 +30,11 @@ export const ProfilePage = () => (
                 <img className={styles.messengerIcon} src={vk} alt="vk" />
               </a>
               <a href="https://github.com/vaadimvoronkov">
-                <img className={styles.messengerIcon} src={github} alt="github" />
+                <img
+                  className={styles.messengerIcon}
+                  src={github}
+                  alt="github"
+                />
               </a>
             </p>
           </div>
@@ -44,23 +48,23 @@ export const ProfilePage = () => (
       <div className={styles.stack}>
         <Technology
           image={htmllogo}
-          name={"HTML"}
-          desc={"Используется для разметки"}
-        ></Technology>
-        <Technology
-          image={jslogo}
-          name={"JAVASCRIPT"}
-          desc={"Используется для добавления логики"}
+          name={'HTML'}
+          desc={'Используется для разметки'}
         ></Technology>
         <Technology
           image={csslogo}
-          name={"CSS"}
-          desc={"Используется для стилизации"}
+          name={'CSS'}
+          desc={'Используется для стилизации'}
         ></Technology>
-         <Technology
+        <Technology
+          image={jslogo}
+          name={'JAVASCRIPT'}
+          desc={'Используется для добавления логики'}
+        ></Technology>
+        <Technology
           image={tslogo}
-          name={"TYPESCRIPT"}
-          desc={"Используется для работы с типами"}
+          name={'TYPESCRIPT'}
+          desc={'Используется для работы с типами'}
         ></Technology>
       </div>
     </div>
