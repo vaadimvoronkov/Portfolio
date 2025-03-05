@@ -1,11 +1,17 @@
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
+import { selectPager, goToNextPage } from '../../../store/slices/releasesSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Pagination = (props) => {
-  const { pager, handleNextPage } = props;
-  console.log({ pager, handleNextPage })
+const Pagination = () => {
+  const dispatch = useDispatch();
+  const pager = useSelector(selectPager);
+
+  const handleNextPage = () => {
+    dispatch(goToNextPage());
+  };
+
   return (
     <div className={styles.pagination}>
-
       <span className="pagination-info">
         {pager.current_page + 1} / {pager.total_pages}
       </span>

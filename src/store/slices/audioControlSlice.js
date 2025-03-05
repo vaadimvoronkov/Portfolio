@@ -1,23 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const audioControlSlice = createSlice({
-  name: "audioControl",
+  name: 'audioControl',
   initialState: {
-    value: "stop",
+    value: 'stop',
   },
   reducers: {
     play: (state) => {
-      state.value = "play";
+      state.value = 'play';
     },
     pause: (state) => {
-      state.value = "stop";
+      state.value = 'stop';
     },
     loading: (state) => {
-      state.value = "loading";
+      state.value = 'loading';
     },
   },
 });
 
 export const { play, pause, loading } = audioControlSlice.actions;
+export const selectAudioState = (state) => state.audioControl.value;
 
 export default audioControlSlice.reducer;
