@@ -7,6 +7,7 @@ import htmllogo from '../../img/htmllogo.png';
 import csslogo from '../../img/csslogo.png';
 import jslogo from '../../img/jslogo.png';
 import tslogo from '../../img/tslogo.png';
+import reduxlogo from '../../img/reduxlogo.png';
 import Technology from '../../components/ProfilePage/Technology';
 
 export const ProfilePage = () => (
@@ -46,26 +47,11 @@ export const ProfilePage = () => (
     </div>
     <div className={styles.stackContainer}>
       <div className={styles.stack}>
-        <Technology
-          image={htmllogo}
-          name={'HTML'}
-          desc={'Используется для разметки'}
-        ></Technology>
-        <Technology
-          image={csslogo}
-          name={'CSS'}
-          desc={'Используется для стилизации'}
-        ></Technology>
-        <Technology
-          image={jslogo}
-          name={'JAVASCRIPT'}
-          desc={'Используется для добавления логики'}
-        ></Technology>
-        <Technology
-          image={tslogo}
-          name={'TYPESCRIPT'}
-          desc={'Используется для работы с типами'}
-        ></Technology>
+        <Technology image={htmllogo} name={'HTML'}></Technology>
+        <Technology image={csslogo} name={'CSS'}></Technology>
+        <Technology image={jslogo} name={'JAVASCRIPT'}></Technology>
+        <Technology image={tslogo} name={'TYPESCRIPT'}></Technology>
+        <Technology image={reduxlogo} name={'REDUX'}></Technology>
       </div>
     </div>
   </>

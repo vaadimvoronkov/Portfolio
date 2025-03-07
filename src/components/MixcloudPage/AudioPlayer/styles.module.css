@@ -4,7 +4,11 @@
   flex-direction: column;
   width: 100%;
   bottom: 0%;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -48,7 +52,7 @@
   filter: none;
   cursor: pointer;
 }
-.playpauseButton img{
+.playpauseButton img {
   width: 60px;
   height: 60px;
 }

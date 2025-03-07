@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
 @font-face {
-  font-family: "Gilroy";
-  src: url("../../fonts/Gilroy-Regular.ttf");
+  font-family: 'Gilroy';
+  src: url('../../fonts/Gilroy-Regular.ttf');
   font-weight: 400;
 }
 .profileContainer {
@@ -80,14 +80,10 @@ mark {
 .stackContainer {
   min-height: 100vh;
 }
-.stackContainer h2 {
-  font-size: 6rem;
-  text-align: center;
-  font-family: "Gilroy";
-}
 .stack {
   display: flex;
   justify-content: space-around;
+  flex-wrap: nowrap;
 }
 
 @media (max-width: 770px) {
@@ -134,14 +130,12 @@ mark {
   .stackContainer {
     min-height: 100vh;
   }
-  .stackContainer h2 {
-    font-size: 6rem;
-    text-align: center;
-    font-family: "Gilroy";
-  }
   .stack {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    vertical-align: center;
+    gap: 30px;
+    margin: 20px;
   }
 }
