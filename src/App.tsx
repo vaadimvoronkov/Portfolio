@@ -1,9 +1,9 @@
-import "./css/reset.css";
-import "./css/main.css";
-import Navigation from "./components/Navigation/index.js";
-import { Routes, Route } from "react-router-dom";
-import { ProfilePage } from "./pages/ProfilePage/index.js";
-import { MixcloudPage } from "./pages/MixcloudPage/index.js";
+import './css/reset.css';
+import './css/main.css';
+import Navigation from './components/Navigation/index.js';
+import { Routes, Route } from 'react-router-dom';
+import { ProfilePage } from './pages/ProfilePage/index.js';
+import { MixcloudPage } from './pages/MixcloudPage';
 
 function App() {
   return (
