@@ -1,9 +1,10 @@
 import './css/reset.css';
 import './css/main.css';
-import Navigation from './components/Navigation/index.js';
+
 import { Routes, Route } from 'react-router-dom';
-import { ProfilePage } from './pages/ProfilePage/index.js';
+import { ProfilePage } from './pages/ProfilePage';
 import { MixcloudPage } from './pages/MixcloudPage';
+import Navigation from './components/Navigation';
 
 function App() {
   return (

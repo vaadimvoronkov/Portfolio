@@ -1,8 +1,8 @@
-import styles from "./styles.module.css";
-import PlayIcon from "../PlayIcon";
-import { useState } from "react";
+import styles from './styles.module.css';
+import PlayIcon from '../PlayIcon';
+import { useState } from 'react';
 
-const imageUrl = "https://aerostatbg.ru";
+const imageUrl = 'https://aerostatbg.ru';
 
 const ReleaseItem = (props) => {
   const { release, index } = props;
@@ -46,7 +46,7 @@ const ReleaseItem = (props) => {
           Оценка: <span className={styles.rating}>{release.rating}</span>
         </p>
         <p>
-          Количество оценок:{" "}
+          Количество оценок:{' '}
           <span className={styles.votes}>{release.vote_count}</span>
         </p>
       </div>

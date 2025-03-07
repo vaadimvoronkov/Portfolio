@@ -1,5 +1,5 @@
 import { GetStateType } from 'src/store';
-import { selectReleases } from './selectores';
+import { selectReleases } from './selectors';
 import { setPager, setReleases } from './slice';
 import { Dispatch } from '@reduxjs/toolkit';
 
