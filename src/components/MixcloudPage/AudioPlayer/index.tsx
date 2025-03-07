@@ -21,7 +21,7 @@ const AudioPlayer = () => {
   const [trackProgress, setTrackProgress] = useState(0);
 
   const audioRef = useRef(new Audio(release.audiofile_url));
-  const intervalRef = useRef();
+  const intervalRef = useRef(null);
 
   const setPlay = () => {
     dispatch(play());
@@ -63,12 +63,20 @@ const AudioPlayer = () => {
   };
 
   const startTimer = () => {
-    clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    } else {
+      console.log('Interval не установлен');
+    }
     intervalRef.current = setInterval(updateProgressBar, 100);
   };
 
   const stopTimer = () => {
-    clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    } else {
+      console.log('Interval не установлен');
+    }
   };
 
   const onSeekChange = (e) => {
