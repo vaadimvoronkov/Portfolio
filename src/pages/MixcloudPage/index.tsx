@@ -6,7 +6,7 @@ import { useReleases } from './hooks';
 import styles from './styles.module.css';
 
 import { useSelector } from 'react-redux';
-import { selectReleases } from 'src/store/slices/releases/selectores';
+import { selectReleases } from 'src/store/slices/releases/selectors';
 
 export const MixcloudPage = () => {
   useReleases();

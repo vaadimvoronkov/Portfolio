@@ -1,7 +1,7 @@
 import {
   selectPageNumber,
   selectPager,
-} from 'src/store/slices/releases/selectores';
+} from 'src/store/slices/releases/selectors';
 import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { goToNextPage } from 'src/store/slices/releases/slice';

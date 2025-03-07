@@ -7,7 +7,7 @@ import htmllogo from '../../img/htmllogo.png';
 import csslogo from '../../img/csslogo.png';
 import jslogo from '../../img/jslogo.png';
 import tslogo from '../../img/tslogo.png';
-import Technology from '../../components/ProfilePage/Technology/index.js';
+import Technology from '../../components/ProfilePage/Technology';
 
 export const ProfilePage = () => (
   <>

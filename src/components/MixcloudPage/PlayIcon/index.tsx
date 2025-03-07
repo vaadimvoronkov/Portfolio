@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 const PlayIcon = (props) => {
   const { isPlaying, index } = props;

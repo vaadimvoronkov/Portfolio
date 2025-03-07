@@ -7,7 +7,7 @@ import prevIcon from '../../../img/icons/player-previous.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { play, loading, pause } from '../../../store/slices/audioControlSlice';
 import { selectAudioState } from '../../../store/slices/audioControlSlice';
-import { selectReleases } from '../../../store/slices/releases/selectores';
+import { selectReleases } from '../../../store/slices/releases/selectors';
 
 const imageUrl = 'https://aerostatbg.ru';
 
