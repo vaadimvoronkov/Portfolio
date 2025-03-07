@@ -2,13 +2,14 @@
   "compilerOptions": {
     "target": "es6",
     "jsx": "react-jsx",
-    "lib": ["es6"],
+    "lib": ["es6","DOM"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "bundler",
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "paths": {
-      "*": ["*"]
+      "src/*": ["./src/*"]
     },
     "typeRoots": ["./node_modules/@types"]
   },
