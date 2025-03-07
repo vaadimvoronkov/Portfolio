@@ -5,7 +5,6 @@ function Technology(props) {
     <section className={styles.technology}>
       <img src={props.image} alt=""></img>
       <p className={styles.name}>{props.name}</p>
-      <p className={styles.desc}>{props.desc}</p>
     </section>
   );
 }
