@@ -1,6 +1,5 @@
 import ReleaseItem from 'src/components/MixcloudPage/ReleaseItem';
 import Pagination from 'src/components/MixcloudPage/Pagination';
-import HelperMenu from 'src/components/MixcloudPage/HelperMenu';
 import AudioPlayer from 'src/components/MixcloudPage/AudioPlayer';
 import { useReleases } from './hooks';
 import styles from './styles.module.css';
@@ -19,7 +18,6 @@ export const MixcloudPage = () => {
 
   return (
     <div className={styles.mixcloud}>
-      <HelperMenu />
       <ul className={styles.releases}>
         {releases.map((release, index) => (
           <ReleaseItem
