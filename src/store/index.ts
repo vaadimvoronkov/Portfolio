@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import audioControlReducer from './slices/audioControlSlice';
 import { releasesReducer } from './slices/releases/slice';
 import { useDispatch } from 'react-redux';
+import { stepSequenceReducer } from 'src/store/slices/stepSequencer/slice';
 
 const store = configureStore({
   reducer: {
-    audioControl: audioControlReducer,
     releases: releasesReducer,
+    audioControl: audioControlReducer,
+    stepSequence: stepSequenceReducer,
   },
 });
 

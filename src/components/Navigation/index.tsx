@@ -11,6 +11,9 @@ function Navigation() {
         <li>
           <Link to="/mixcloud">MixCloud</Link>
         </li>
+        <li>
+          <Link to="/steps-sequencer">Steps sequencer</Link>
+        </li>
       </ul>
     </nav>
   );

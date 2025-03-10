@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ProfilePage } from './pages/ProfilePage';
 import { MixcloudPage } from './pages/MixcloudPage';
 import Navigation from './components/Navigation';
+import { StepSequencer } from 'src/pages/stepSequencer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProfilePage />} />
           <Route path="/mixcloud" element={<MixcloudPage />} />
+          <Route path="/steps-sequencer" element={<StepSequencer />} />
         </Routes>
       </div>
     </div>
