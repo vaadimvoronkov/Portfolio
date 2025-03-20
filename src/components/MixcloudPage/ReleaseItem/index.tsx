@@ -8,7 +8,7 @@ const ReleaseItem = (props) => {
   const { release, index } = props;
   const [isPlaying, setIsPlaying] = useState(null);
 
-  const handlePlayPause = (index) => {
+  const handlePlayPause = (index: number) => {
     if (isPlaying === index) {
       setIsPlaying(null);
     } else {

@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import playIcon from '../../../img/icons/player-play.svg';
 import pauseIcon from '../../../img/icons/player-pause.svg';
 import nextIcon from '../../../img/icons/player-next.svg';
@@ -21,18 +21,12 @@ const AudioPlayer = () => {
   const dispatch = useDispatch();
   const audioState = useSelector(selectAudioState);
   const releases = useSelector(selectReleases);
-  const currentRelease = useSelector(selectCurrentRelease); //как инициализировать последний релиз при перой загрузке компонента? получаем только индекс, а само содержимое релиза пустое
-  const trackIndex = useSelector(selectCurrentIndex);
-
-  console.log(releases);
-  console.log(currentRelease);
-  console.log(`index: ${trackIndex} audiostate: ${audioState}`);
-
-  // const [trackIndex, setTrackIndex] = useState(0);
-  // const [release, setRelease] = useState(releases[trackIndex]);
+  const release = useSelector(selectCurrentRelease);
+  const releaseIndex = useSelector(selectCurrentIndex);
 
   const [trackProgress, setTrackProgress] = useState(0);
-  const audioRef = useRef(new Audio(currentRelease.audiofile_url));
+  const [volume, setVolume] = useState(100); // Инициализируем уровень громкости на 100%
+  const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef(null);
 
   const setPlay = () => {
@@ -46,16 +40,16 @@ const AudioPlayer = () => {
   };
 
   const handleNextPlaylist = () => {
-    if (trackIndex < releases.length - 1) {
-      playTrackByIndex(trackIndex + 1);
+    if (releaseIndex < releases.length - 1) {
+      playTrackByIndex(releaseIndex + 1);
     } else {
       playTrackByIndex(0);
     }
   };
 
   const handlePrevPlaylist = () => {
-    if (trackIndex - 1 >= 0) {
-      playTrackByIndex(trackIndex - 1);
+    if (releaseIndex - 1 >= 0) {
+      playTrackByIndex(releaseIndex - 1);
     } else {
       playTrackByIndex(releases.length - 1);
     }
@@ -97,6 +91,12 @@ const AudioPlayer = () => {
     audioRef.current.currentTime = seekTo;
   };
 
+  const onVolumeChange = (e) => {
+    const newVolume = e.target.value / 100;
+    setVolume(e.target.value);
+    audioRef.current.volume = newVolume;
+  };
+
   function startAudio() {
     if (audioState === 'stop') {
       setLoading();
@@ -120,14 +120,12 @@ const AudioPlayer = () => {
     }
   }
 
-  function playTrackByIndex(index) {
-    // setRelease(releases[index]);
-    // setTrackIndex(index);
+  function playTrackByIndex(index: number) {
     dispatch(setRelease(releases[index]));
     dispatch(setIndex(index));
 
     audioRef.current.pause();
-    audioRef.current.src = currentRelease.audiofile_url;
+    audioRef.current.src = release.audiofile_url;
     audioRef.current.load();
     setLoading();
 
@@ -146,12 +144,14 @@ const AudioPlayer = () => {
   useEffect(() => {
     const audioElement = audioRef.current;
     audioElement.addEventListener('loadedmetadata', () => {
-      setRelease((prevRelease) => ({
-        ...prevRelease,
-        duration: Math.floor(audioElement.duration),
-      })); //используется просто метод setRelease без диспатч. Если добавить диспатч, то вылетает ошибка о том, что данные не могут десериализоваться
+      dispatch(
+        setRelease({
+          ...release,
+          duration: Math.floor(audioElement.duration),
+        })
+      );
     });
-  }, [currentRelease.audiofile_url]);
+  }, [release.audiofile_url, dispatch, release]);
 
   return (
     <div className={styles.audioPlayer}>
@@ -159,7 +159,7 @@ const AudioPlayer = () => {
         type="range"
         value={trackProgress}
         min={0}
-        max={currentRelease.duration || 100}
+        max={release.duration || 100}
         step="1"
         onChange={onSeekChange}
       />
@@ -184,12 +184,21 @@ const AudioPlayer = () => {
         </div>
         <div className={styles.audioInformation}>
           <div>
-            <div>{currentRelease.title}</div>
-            <div>{currentRelease.number}</div>
+            <div>{release.title}</div>
+            <div>{release.number}</div>
           </div>
-          <img src={`${imageUrl}${currentRelease.image_url}`} alt="img"></img>
+          <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
         </div>
-        <div className={styles.options}>Options</div>
+        <div className={styles.options}>
+          <input
+            type="range"
+            value={volume}
+            min={0}
+            max={100}
+            step="1"
+            onChange={onVolumeChange}
+          />
+        </div>
       </div>
     </div>
   );
