@@ -8,6 +8,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { play, loading, pause } from '../../../store/slices/audioControlSlice';
 import { selectAudioState } from '../../../store/slices/audioControlSlice';
 import { selectReleases } from '../../../store/slices/releases/selectors';
+import {
+  setRelease,
+  setIndex,
+  selectCurrentRelease,
+  selectCurrentIndex,
+} from 'src/store/slices/currentRelease/currentRelease';
 
 const imageUrl = 'https://aerostatbg.ru';
 
@@ -15,12 +21,18 @@ const AudioPlayer = () => {
   const dispatch = useDispatch();
   const audioState = useSelector(selectAudioState);
   const releases = useSelector(selectReleases);
+  const currentRelease = useSelector(selectCurrentRelease); //как инициализировать последний релиз при перой загрузке компонента? получаем только индекс, а само содержимое релиза пустое
+  const trackIndex = useSelector(selectCurrentIndex);
 
-  const [trackIndex, setTrackIndex] = useState(0);
-  const [release, setRelease] = useState(releases[trackIndex]);
+  console.log(releases);
+  console.log(currentRelease);
+  console.log(`index: ${trackIndex} audiostate: ${audioState}`);
+
+  // const [trackIndex, setTrackIndex] = useState(0);
+  // const [release, setRelease] = useState(releases[trackIndex]);
+
   const [trackProgress, setTrackProgress] = useState(0);
-
-  const audioRef = useRef(new Audio(release.audiofile_url));
+  const audioRef = useRef(new Audio(currentRelease.audiofile_url));
   const intervalRef = useRef(null);
 
   const setPlay = () => {
@@ -109,14 +121,16 @@ const AudioPlayer = () => {
   }
 
   function playTrackByIndex(index) {
-    setRelease(releases[index]);
-    setTrackIndex(index);
+    // setRelease(releases[index]);
+    // setTrackIndex(index);
+    dispatch(setRelease(releases[index]));
+    dispatch(setIndex(index));
 
     audioRef.current.pause();
-    audioRef.current.src = release.audiofile_url;
+    audioRef.current.src = currentRelease.audiofile_url;
     audioRef.current.load();
-
     setLoading();
+
     audioRef.current
       .play()
       .then(() => {
@@ -135,9 +149,9 @@ const AudioPlayer = () => {
       setRelease((prevRelease) => ({
         ...prevRelease,
         duration: Math.floor(audioElement.duration),
-      }));
+      })); //используется просто метод setRelease без диспатч. Если добавить диспатч, то вылетает ошибка о том, что данные не могут десериализоваться
     });
-  }, [release.audiofile_url]);
+  }, [currentRelease.audiofile_url]);
 
   return (
     <div className={styles.audioPlayer}>
@@ -145,7 +159,7 @@ const AudioPlayer = () => {
         type="range"
         value={trackProgress}
         min={0}
-        max={release.duration || 100}
+        max={currentRelease.duration || 100}
         step="1"
         onChange={onSeekChange}
       />
@@ -170,10 +184,10 @@ const AudioPlayer = () => {
         </div>
         <div className={styles.audioInformation}>
           <div>
-            <div>{release.title}</div>
-            <div>{release.number}</div>
+            <div>{currentRelease.title}</div>
+            <div>{currentRelease.number}</div>
           </div>
-          <img src={`${imageUrl}${release.image_url}`} alt="img"></img>
+          <img src={`${imageUrl}${currentRelease.image_url}`} alt="img"></img>
         </div>
         <div className={styles.options}>Options</div>
       </div>

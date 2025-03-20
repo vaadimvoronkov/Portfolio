@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const currentRelease = createSlice({
   name: 'currentRelease',
   initialState: {
-    release: {},
+    value: {},
     index: 0,
   },
   reducers: {
     setRelease: (state, { payload }) => {
-      state.release = payload;
+      state.value = payload;
     },
     setIndex: (state, { payload }) => {
       state.index = payload;
@@ -17,7 +17,8 @@ export const currentRelease = createSlice({
 });
 
 export const { setRelease, setIndex } = currentRelease.actions;
-export const selectCurrentRelease = (state) => state.currentRelease.release;
+
+export const selectCurrentRelease = (state) => state.currentRelease.value;
 export const selectCurrentIndex = (state) => state.currentRelease.index;
 
 export const currentReleaseReducer = currentRelease.reducer;
