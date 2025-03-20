@@ -1,15 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Pager = {
-  total_pages: number;
-};
-
-type Store = {
-  pager: Pager;
-  pageNumber: number;
-  releases: any[];
-};
-
 const initialState: Store = {
   releases: [],
   pager: {

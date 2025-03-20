@@ -7,8 +7,6 @@ import { selectPageNumber } from 'src/store/slices/releases/selectors';
 export const useReleases = () => {
   const dispatch = useAppDispatch();
   const pageNumber = useSelector(selectPageNumber);
-
-  console.log(pageNumber);
   useEffect(() => {
     dispatch(fetchReleases(pageNumber));
   }, [pageNumber, dispatch]);
