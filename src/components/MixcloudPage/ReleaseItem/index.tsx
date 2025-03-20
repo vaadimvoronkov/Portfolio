@@ -33,7 +33,7 @@ const ReleaseItem = (props) => {
         </div>
       </div>
       <div className={styles.tracklistContainer}>
-        <h2>Список треков:</h2>
+        <h3>Список треков:</h3>
         <div className={styles.tracklist}>
           {release.composition_list.map((composition, index) => (
             <div key={index}>{composition.composition_name}</div>
