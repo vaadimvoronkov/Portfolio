@@ -25,9 +25,12 @@ const AudioPlayer = () => {
   const releaseIndex = useSelector(selectCurrentIndex);
 
   const [trackProgress, setTrackProgress] = useState(0);
-  const [volume, setVolume] = useState(100); // Инициализируем уровень громкости на 100%
+  const [volume, setVolume] = useState(100);
   const audioRef = useRef(new Audio(release.audiofile_url));
   const intervalRef = useRef(null);
+
+  console.log(release);
+  console.log(`$index: ${releaseIndex} audiostate: ${audioState}`);
 
   const setPlay = () => {
     dispatch(play());

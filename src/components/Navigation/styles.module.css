@@ -4,6 +4,11 @@
   padding: 10px;
 }
 
+.navigation a {
+  text-decoration: none;
+  color: black;
+}
+
 .navigation a:hover {
   color: black;
   text-decoration: underline;

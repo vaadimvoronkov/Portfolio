@@ -13,7 +13,7 @@ export const releasesSlice = createSlice({
   initialState: initialState,
   reducers: {
     setReleases: (state, { payload }) => {
-      state.releases = payload;
+      state.releases = [...state.releases, ...payload];
     },
     setPager: (state, { payload }) => {
       state.pager = payload;
@@ -21,17 +21,9 @@ export const releasesSlice = createSlice({
     setPageNumber: (state, { payload }) => {
       state.pageNumber = payload;
     },
-    goToNextPage: (state) => {
-      const pageNumber = state.pageNumber;
-      const total_pages = state.pager.total_pages;
-      if (pageNumber < total_pages) {
-        state.pageNumber = state.pageNumber + 1;
-      }
-    },
   },
 });
 
-export const { goToNextPage, setReleases, setPager, setPageNumber } =
-  releasesSlice.actions;
+export const { setReleases, setPager, setPageNumber } = releasesSlice.actions;
 
 export const releasesReducer = releasesSlice.reducer;
