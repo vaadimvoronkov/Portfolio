@@ -3,11 +3,12 @@ import {
   selectPager,
 } from 'src/store/slices/releases/selectors';
 import styles from './styles.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { goToNextPage } from 'src/store/slices/releases/slice';
+import { useSelector } from 'react-redux';
+import { goToNextPage } from 'src/store/slices/releases/actions';
+import { useAppDispatch } from 'src/store';
 
 const Pagination = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const pager = useSelector(selectPager);
   const pageNumber = useSelector(selectPageNumber);
 
